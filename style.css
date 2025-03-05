@@ -1,0 +1,470 @@
+* {
+margin: 0;
+padding: 0;
+font-family: Arial, Helvetica, sans-serif;
+box-sizing: border-box;
+scroll-behavior: smooth;
+}
+
+
+body {
+background: rgb(17, 17, 17);
+overflow-x: hidden;
+}
+
+/* Navigation Bar */
+nav {
+position: fixed;
+display: grid;
+grid-template-columns: 150px 1fr;
+justify-content: space-between;
+width: 100vw;
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(5px);
+color: white;
+}
+
+nav .logo {
+display: flex;
+place-items: center;
+padding: 8px 10px;
+font-size: clamp(1.5rem, 3.3vw, 2rem);
+}
+
+.nav-bar {
+position: relative;
+}
+
+.nav-bar ul {
+position: fixed;
+top: 0;
+right: 0;
+border: 1.5px solid black;
+border-radius: 15px 0 0 15px;
+justify-self: end;
+align-self: center;
+width: 200px;
+height: 285px;
+z-index: 1;
+background: #212121;
+visibility: hidden;
+transform: translate(90%, -90%);
+transition: transform 0.2s ease-in-out;
+}
+
+.nav-bar .fa-solid:hover + ul,
+.nav-bar ul:hover {
+visibility: visible;
+transform: translate(0, 0);
+}
+
+.nav-bar ul li {
+list-style: none;
+margin: 8px 2px;
+text-align: center;
+padding: 19px 0;
+font-size: clamp(14px, 2vw, 20px);
+border-radius: 15px;
+transition: border 0.28s ease,;
+}
+.nav-bar ul li:hover {
+background: rgb(52, 52, 52);
+}
+
+.nav-bar ul li a {
+text-decoration: none;
+color: white;
+}
+
+.nav-bar .fa-solid {
+position: relative;
+top: 4px;
+left: 82%;
+font-size: 22px;
+cursor: pointer;
+padding: 3px;
+border: 1.5px solid white;
+border-radius: 5px;
+width: 35px;
+text-align: center;
+}
+
+.nav-bar .fa-solid:active {
+scale: 1.05;
+}
+
+/* Home page */
+#home {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+height: 100vh;
+background: linear-gradient(45deg, #141414, #222);
+color: white;
+text-align: center;
+padding: 70px 30px 30px 30px;
+}
+
+#home h2 {
+margin-bottom: 12px;
+font-size: clamp(30px, 3.5vw, 60px);
+}
+#home h2 span {
+color: aqua;
+}
+
+#home p {
+font-size: clamp(14px, 2vw, 18px);
+}
+
+#home h2, #home p, .btn-cta {
+animation: fadein 2s ease;
+}
+
+@keyframes fadein {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+/* CTA Button */
+.btn-cta {
+margin: 30px auto;
+text-decoration: none;
+border-radius: clamp(4px, 1vw, 6px);
+border: 1.5px solid white;
+background: transparent;
+color: white;
+padding: 8px 15px;
+font-size: clamp(11px, 2vw, 14px);
+transition: scale 0.05s ease, box-shadow 0.6s ease, background 0.6s ease;
+}
+.btn-cta:hover {
+border: 1.5px solid aqua;
+box-shadow: 0px 0px 10px aqua;
+color: aqua;
+}
+.btn-cta:active {
+scale: 1.02;
+}
+
+/* About Section */
+#about {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 1000px;
+margin: auto;
+padding: 80px 20px;
+color: white;
+text-align: left;
+}
+
+/* Individual Sections */
+.introduction, .skills, .experience, .hobbies {
+background: rgba(255, 255, 255, 0.1);
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Headings */
+#about h2 {
+color: white;
+text-shadow: 0px 0px 3px aqua;
+text-align: center;
+margin-bottom: 10px;
+}
+
+/* Skills List */
+.skills ul, .hobbies ul {
+list-style: none;
+padding: 0;
+}
+
+.skills ul li, .hobbies ul li {
+background: rgba(0, 255, 255, 0.2);
+padding: 10px;
+margin: 5px 0;
+border-radius: 5px;
+}
+.skills ul li:hover, .hobbies ul li:hover {
+background: rgb(0, 107, 107);
+transition: background 0.3s ease;
+}
+
+/* Experience */
+.experience h4 {
+margin-top: 10px;
+color: white;
+text-shadow: 0px 0px 2px aqua;
+}
+
+.introduction:hover,
+.skills:hover,
+.experience:hover,
+.hobbies:hover {
+scale: 1.03;
+box-shadow: 0px 0px 15px aqua;
+transition: scale 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Project Section */
+#projects {
+color: white;
+background: #181818;
+padding: 80px 15px;
+text-align: center;
+}
+#projects h1 {
+font-size: 2rem;
+text-shadow: 0px 0px 5px aqua;
+margin: 20px auto;
+}
+.projects {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+}
+.project-card {
+background: rgba(255, 255, 255, 0.1);
+padding: 20px;
+border-radius: 8px;
+width: 300px;
+margin: 20px auto;
+}
+.project-card h3 {
+color: aqua;
+}
+.project-card img {
+width: 100%;
+margin-bottom: 13px;
+}
+.project-card h3, p {
+margin-bottom: 15px;
+}
+.project-card a {
+position: relative;
+color: white;
+text-decoration: none;
+top: 10px;
+margin: 0 15px;
+transition: color 0.3s ease, text-hsadow 0.3s ease;
+}
+.project-card a:hover {
+color: aqua;
+text-shadow: 0px 0px 3px aqua;
+}
+
+.project-card:hover {
+scale: 1.03;
+box-shadow: 0px 0px 15px aqua;
+transition: scale 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Contact Section */
+#contact {
+text-align: center;
+color: white;
+padding: 50px 20px;
+}
+
+.contact-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 30px;
+margin-top: 20px;
+}
+
+form {
+background: rgba(255, 255, 255, 0.1);
+padding: 20px;
+border-radius: 8px;
+width: 350px;
+display: flex;
+flex-direction: column;
+}
+
+.input-group {
+margin-bottom: 15px;
+text-align: left;
+}
+
+.input-group label {
+display: block;
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea {
+width: 100%;
+padding: 8px;
+border-radius: 4px;
+border: none;
+background: rgba(255, 255, 255, 0.2);
+color: white;
+}
+
+.input-group textarea {
+height: 100px;
+}
+
+.btn-send {
+padding: 10px;
+border: none;
+background: aqua;
+color: black;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+border-radius: 5px;
+transition: 0.3s;
+}
+
+.btn-send:hover {
+background: rgb(0, 255, 170);
+}
+
+.contact-info {
+width: 350px;
+background: rgba(255, 255, 255, 0.1);
+padding: 20px;
+border-radius: 8px;
+text-align: left;
+}
+
+.contact-info p {
+margin: 10px 0;
+}
+
+.contact-info i {
+margin-right: 10px;
+color: aqua;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+nav {
+display: grid;
+grid-template-columns: 200px 1fr;
+width: 100%;
+position: fixed;
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(5px);
+}
+
+.nav-bar {  
+    position: static;
+
+}
+
+.nav-bar ul {  
+    display: flex;  
+    justify-content: space-evenly;  
+    position: static;  
+    border: none;  
+    width: 70%;  
+    height: auto;  
+    z-index: 0;  
+    visibility: visible;  
+    box-sizing: border-box;  
+    background: transparent;  
+    transform: translate(0, 0);  
+}  
+
+.nav-bar ul li {  
+    list-style: none;  
+    margin: 10px 0px 2px 0px;  
+    text-align: center;  
+    padding: 6px 12px;  
+}  
+
+.nav-bar ul li:hover {  
+    background: transparent;  
+}  
+
+.nav-bar ul li a {  
+    text-decoration: none;  
+    color: white;  
+    display: block;  
+    font-size: 0.9rem;  
+    transition: color 0.2s ease, text-shadow 0.2s ease;  
+}  
+.nav-bar ul li a:hover {  
+    color: aqua;  
+    text-shadow: 0px 0px 2.5px aqua;  
+}  
+  
+.nav-bar .fa-solid {  
+    display: none;  
+}
+
+}
+
+@media (min-width: 1024px) {
+nav {
+display: grid;
+grid-template-columns: 200px 1fr;
+width: 100%;
+position: fixed;
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(5px);
+}
+
+nav h1 {  
+    padding: 8px;  
+    text-align: center;  
+}  
+  
+.nav-bar {  
+    position: static;  
+}  
+  
+.nav-bar ul {  
+    display: flex;  
+    justify-content: space-evenly;  
+    position: static;  
+    border: none;  
+    width: 70%;  
+    height: auto;  
+    z-index: 0;  
+    visibility: visible;  
+    box-sizing: border-box;  
+    background: transparent;  
+    transform: translate(0, 0);  
+}  
+  
+.nav-bar ul li {  
+    list-style: none;  
+    margin: 10px 0px 2px 0px;  
+    text-align: center;  
+    padding: 6px 12px;  
+    border-radius: 10px;  
+    transition: background 0.28s ease;  
+}  
+.nav-bar ul li:hover {  
+    background: transparent;  
+}  
+
+.nav-bar ul li a {  
+    text-decoration: none;  
+    color: white;  
+    display: block;  
+    font-size: 1rem;  
+    transition: color 0.2s ease, text-shadow 0.2s ease;  
+}  
+.nav-bar ul li a:hover {  
+    color: aqua;  
+    text-shadow: 0px 0px 2.5px aqua;  
+}  
+  
+.nav-bar .fa-solid {  
+    display: none;  
+}
+
+  }

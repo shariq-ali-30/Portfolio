@@ -67,7 +67,7 @@ font-size: clamp(14px, 2vw, 20px);
 border-radius: 15px;
 }
 .nav_bar ul li:hover {
-background: rgd(25, 25, 25);
+background: rgb(25, 25, 25);
 }
 
 .nav-bar ul li a {

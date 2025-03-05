@@ -61,18 +61,18 @@ transform: translate(0, 0);
 .nav-bar ul li {
 list-style: none;
 text-align: center;
+margin: 8px 2px;
+padding: 19px 0;
 font-size: clamp(14px, 2vw, 20px);
 border-radius: 15px;
+}
+.nav_bar ul li:hover {
+background: rgd(25, 25, 25);
 }
 
 .nav-bar ul li a {
 text-decoration: none;
 color: white;
-margin: 8px 2px;
-padding: 19px 0;
-}
-.nav-bar ul li a:hover {
-background:rgb(52, 52, 52);
 }
 
 .nav-bar .fa-solid {
@@ -380,7 +380,8 @@ backdrop-filter: blur(5px);
     list-style: none;  
     margin: 10px 0px 2px 0px;  
     text-align: center;  
-    padding: 6px 12px;  
+    padding: 6px 12px;
+    background: transparent;
 }
 
 .nav-bar ul li a {  
@@ -389,11 +390,10 @@ backdrop-filter: blur(5px);
     display: block;  
     font-size: 0.9rem;  
     transition: color 0.2s ease, text-shadow 0.2s ease;  
-}  
+}
 .nav-bar ul li a:hover {  
     color: aqua;  
     text-shadow: 0px 0px 2.5px aqua;
-    background: transparent;
 }  
   
 .nav-bar .fa-solid {  
@@ -448,12 +448,12 @@ nav h1 {
     color: white;  
     display: block;  
     font-size: 1rem;  
-    transition: color 0.2s ease, text-shadow 0.2s ease;  
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+    background: transparent
 }  
 .nav-bar ul li a:hover {  
     color: aqua;  
-    text-shadow: 0px 0px 2.5px aqua;
-    background: transparent; 
+    text-shadow: 0px 0px 2.5px aqua; 
 }  
   
 .nav-bar .fa-solid {  

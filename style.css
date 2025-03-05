@@ -60,26 +60,25 @@ transform: translate(0, 0);
 
 .nav-bar ul li {
 list-style: none;
-margin: 8px 2px;
 text-align: center;
-padding: 19px 0;
 font-size: clamp(14px, 2vw, 20px);
 border-radius: 15px;
-transition: border 0.28s ease,;
-}
-.nav-bar ul li:hover {
-background: rgb(52, 52, 52);
 }
 
 .nav-bar ul li a {
 text-decoration: none;
 color: white;
+margin: 8px 2px;
+padding: 19px 0;
+}
+.nav-bar ul li a:hover {
+background:rgb(52, 52, 52);
 }
 
 .nav-bar .fa-solid {
 position: relative;
 top: 4px;
-left: 82%;
+left: 80%;
 font-size: 22px;
 cursor: pointer;
 padding: 3px;
@@ -382,11 +381,7 @@ backdrop-filter: blur(5px);
     margin: 10px 0px 2px 0px;  
     text-align: center;  
     padding: 6px 12px;  
-}  
-
-.nav-bar ul li:hover {  
-    background: transparent;  
-}  
+}
 
 .nav-bar ul li a {  
     text-decoration: none;  
@@ -397,7 +392,8 @@ backdrop-filter: blur(5px);
 }  
 .nav-bar ul li a:hover {  
     color: aqua;  
-    text-shadow: 0px 0px 2.5px aqua;  
+    text-shadow: 0px 0px 2.5px aqua;
+    background: transparent;
 }  
   
 .nav-bar .fa-solid {  
@@ -446,11 +442,7 @@ nav h1 {
     padding: 6px 12px;  
     border-radius: 10px;  
     transition: background 0.28s ease;  
-}  
-.nav-bar ul li:hover {  
-    background: transparent;  
-}  
-
+}
 .nav-bar ul li a {  
     text-decoration: none;  
     color: white;  
@@ -460,7 +452,8 @@ nav h1 {
 }  
 .nav-bar ul li a:hover {  
     color: aqua;  
-    text-shadow: 0px 0px 2.5px aqua;  
+    text-shadow: 0px 0px 2.5px aqua;
+    background: transparent; 
 }  
   
 .nav-bar .fa-solid {  

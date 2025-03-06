@@ -87,9 +87,11 @@ border-radius: 5px;
 width: 35px;
 text-align: center;
 }
-
 .nav-bar .fa-solid:active {
 scale: 1.05;
+}
+.nav-bar .fa-solid;hover {
+display: none;
 }
 
 /* Home page */

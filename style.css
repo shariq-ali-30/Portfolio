@@ -1,6 +1,7 @@
 :root {
     --primary-orange: #FF6500;
-    --body-bg: #0E0E0E;
+    --primary-hover-ornage: #E65C00;
+    --body-bg: #000000;
     --navbar-bg: #151515;
     
     --primary-text: #FFFFFF;
@@ -19,6 +20,7 @@
 body {
     background-color: var(--body-bg);
     color: var(--primary-text);
+    padding-top: 80px;
 }
 
 .container {
@@ -26,6 +28,7 @@ body {
     width: 90%;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -93,14 +96,174 @@ body {
     width: 25px;
 }
 
-.navbar .theme-toggle {
+.navbar .btns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar .btns .mobile-menu {
+    display: none;
+}
+
+.navbar button {
     width: 45px;
     height: 45px;
     background-color: transparent;
-    color: var(--primary-text);
+    color: var(--nav-links-text);
     border: var(--navbar-border);
     border-width: 1.5px;
     border-radius: 8px;
     font-size: 20px;
     cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.navbar button:hover {
+    color: var(--primary-text);
+}
+
+/* Hero Section */
+
+.hero-section {
+    margin-top: 60px;
+    width: 100%;
+    margin-left: 50px;
+}
+
+.hero-section .role {
+    margin-top: 20px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    width: fit-content;
+    border: var(--navbar-border);
+    background-color: var(--navbar-bg);
+    border-radius: 20px;
+}
+
+.hero-section .role span {
+    border: 3px solid var(--primary-orange);
+    border-radius: 50%;
+
+}
+
+.hero-section .intro {
+    margin-top: 20px;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.hero-section .intro span {
+    color: var(--primary-orange);
+}
+
+.hero-section .description {
+    margin-top: 20px;
+    color: var(--nav-links-text);
+    max-width: 500px;
+}
+
+.hero-section .btns {
+    margin-top: 30px;
+    display: flex;
+    gap: 16px;
+}
+
+.hero-section .btns a {
+    color: var(--primary-text);
+    text-decoration: none;
+    border: var(--navbar-border);
+    border-width: 1.5px;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.hero-section .btns a:hover {
+    background-color: var(--navbar-bg);
+}
+
+.hero-section .btns .view-project-btn {
+    background-color: var(--primary-orange);
+    border: 1.5px solid var(--primary-ornage);
+}
+
+.hero-section .btns .view-project-btn:hover {
+    background-color: var(--primary-hover-ornage);
+}
+
+.hero-section .btns a .fa-envelope {
+    font-size: 18px;
+}
+
+.hero-section .social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.hero-section .social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--nav-links-text);
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: var(--navbar-border);
+    border-width: 1.5px;
+    transition: color 0.2s ease;
+}
+
+.hero-section .social-links a:hover {
+    color: var(--primary-text);
+}
+
+
+/* About Section */
+
+.about-section {
+    margin-top: 60px;
+    width: 100%;
+}
+
+.about-section .about .title {
+    color: var(--nav-links-text);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    font-size: 14px;
+}
+
+.about-section .about .title span {
+    border: 3px solid var(--primary-orange);
+    border-radius: 50%;
+}
+
+.about-section h1 {
+    font-weight: 500;
+}
+
+
+
+@media (max-width: 600px) {
+    
+    .navbar .nav-links {
+        display: none;
+    }
+
+    .navbar .btns .mobile-menu {
+        display: block;
+    }
 }

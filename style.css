@@ -1,0 +1,106 @@
+:root {
+    --primary-orange: #FF6500;
+    --body-bg: #0E0E0E;
+    --navbar-bg: #151515;
+    
+    --primary-text: #FFFFFF;
+    --nav-links-text: #A1A1AA;
+
+    --navbar-border: 1px solid #24282e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--primary-text);
+}
+
+.container {
+    max-width: 1400px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+    position: fixed;
+    top: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--navbar-bg);
+    border: var(--navbar-border);
+    padding: 8px 16px;
+    border-radius: 10px;
+}
+
+.navbar .logo {
+    font-size: 28px;
+}
+
+.navbar .logo span {
+    color: var(--primary-orange);
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar .nav-links li {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.navbar .nav-links li a {
+    color: var(--nav-links-text);
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.navbar .nav-links li a:hover {
+    color: var(--primary-text);
+}
+
+.navbar .nav-links li a span {
+    border: 1.5px solid var(--primary-orange);
+    border-radius: 10px;
+    width: 0;
+    visibility: hidden;
+    transition: width 0.2s ease;
+}
+
+.navbar .nav-links li a.active {
+    color: var(--primary-text);
+}
+
+.navbar .nav-links li a.active span {
+    visibility: visible;
+    width: 25px;
+}
+
+.navbar .theme-toggle {
+    width: 45px;
+    height: 45px;
+    background-color: transparent;
+    color: var(--primary-text);
+    border: var(--navbar-border);
+    border-width: 1.5px;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}

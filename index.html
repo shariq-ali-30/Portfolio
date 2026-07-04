@@ -22,25 +22,26 @@
 
         <nav class="navbar">
             <h1 class="logo">SA<span>.</span></h1>
-            <ul class="nav-links">
-                <li><a href="Javascript:void(0)" class="active">Home <span></span></a></li>
-                <li><a href="Javascript:void(0)">About <span></span></a></li>
-                <li><a href="Javascript:void(0)">Projects <span></span></a></li>
-                <li><a href="Javascript:void(0)">Contact <span></span></a></li>
-            </ul>
-            <div class="mobile-menu-container active">
-                <ul class="mobile-menu">
-                    <i class="fa-solid fa-xmark"></i>
-                    <li><a href="Javascript:void(0)" class="active"><i class="fa-solid fa-house-chimney"></i> Home</a>
-                    </li>
-                    <li><a href="Javascript:void(0)"><i class="fa-solid fa-user"></i> About</a></li>
-                    <li><a href="Javascript:void(0)"><i class="fa-solid fa-briefcase"></i> Projects</a></li>
-                    <li><a href="Javascript:void(0)"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-                </ul>
+            <div class="nav-links">
+                <span class="link active">Home <span></span></span>
+                <span class="link">About <span></span></span>
+                <span class="link">Projects <span></span></span>
+                <span class="link">Contact <span></span></span>
+            </div>
+            <div class="mobile-menu-container">
+                <div class="mobile-menu">
+                    <i class="fa-solid fa-xmark close-menu-icon"></i>
+                    <div class="mobile-menu-links">
+                        <span class="link active"><i class="fa-solid fa-house-chimney"></i> Home</span>
+                        <span class="link"><i class="fa-solid fa-user"></i> About</span>
+                        <span class="link"><i class="fa-solid fa-briefcase"></i> Projects</span>
+                        <span class="link"><i class="fa-solid fa-envelope"></i> Contact</span>
+                    </div>
+                </div>
             </div>
             <div class="btns">
                 <button class="theme-toggle"><i class="fa-solid fa-sun"></i></button>
-                <button class="mobile-menu-icon"><i class="fa-solid fa-bars"></i></button>
+                <button class="menu-icon"><i class="fa-solid fa-bars"></i></button>
             </div>
         </nav>
 

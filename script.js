@@ -1,14 +1,6 @@
-let navLinks = document.querySelector(".nav-links").children
+let menuIcon = document.querySelector(".menu-icon")
+let crossIcon = document.querySelector(".close-menu-icon")
+let mobileMenuContainer = document.querySelector(".mobile-menu-container")
 
-function activeLinkHandler () {
-    
-    for (let i = 0; i < navLinks.length; i++) {
-        navLinks[i].children[0].classList.remove("active")
-    }
-    this.children[0].classList.add("active")
-        
-}
-
-for (let i = 0; i < navLinks.length; i++) {
-    navLinks[i].addEventListener("click", activeLinkHandler)
-}
+menuIcon.addEventListener("click", () => mobileMenuContainer.classList.add("active"))
+crossIcon.addEventListener("click", () => mobileMenuContainer.classList.remove("active"))

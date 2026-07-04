@@ -1,13 +1,17 @@
 :root {
-    --primary-orange: #FF6500;
-    --primary-hover-ornage: #E65C00;
-    --body-bg: #000000;
-    --navbar-bg: #151515;
+    --primary-blue: #2D8CFF;
+    --primary-hover-blue: #0D6EFF;
+    --body-bg: #030812;
+    --section-bg: #07101D;
+    --navbar-bg: #060D19;
+    --view-project-btn-bg: #1D7EFF;
 
-    --primary-text: #FFFFFF;
-    --nav-links-text: #A1A1AA;
 
-    --navbar-border: 1.5px solid #24282e;
+    --primary-text: #F8FAFC;
+    --nav-links-text: #A2ACB8;
+
+    --navbar-border: 1.5px solid #172133;
+    --section-border: 1.5px solid #152338;
 }
 
 * {
@@ -36,8 +40,8 @@ body {
 .navbar {
     position: fixed;
     top: 20px;
-    width: 90%;
-    max-width: 1400px;
+    width: 95%;
+    max-width: 1450px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,7 +56,7 @@ body {
 }
 
 .navbar .logo span {
-    color: var(--primary-orange);
+    color: var(--primary-blue);
 }
 
 .navbar .nav-links {
@@ -82,7 +86,7 @@ body {
 }
 
 .navbar .nav-links li a span {
-    border: 1.5px solid var(--primary-orange);
+    border: 1.5px solid var(--primary-blue);
     border-radius: 10px;
     width: 0;
     visibility: hidden;
@@ -124,12 +128,21 @@ body {
     color: var(--primary-text);
 }
 
+section {
+    background-color: var(--section-bg);
+    padding: 25px;
+    border: var(--section-border);
+    border-radius: 12px;
+    margin-top: 60px;
+    width: 100%;
+}
+
 /* Hero Section */
 
 .hero-section {
-    margin-top: 60px;
-    width: 100%;
-    margin-left: 50px;
+    padding-left: 50px;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .hero-section .role {
@@ -146,18 +159,17 @@ body {
 }
 
 .hero-section .role span {
-    border: 3px solid var(--primary-orange);
+    border: 3px solid var(--primary-blue);
     border-radius: 50%;
 }
 
 .hero-section .intro {
     margin-top: 20px;
     font-size: 50px;
-    font-weight: 600;
 }
 
 .hero-section .intro span {
-    color: var(--primary-orange);
+    color: var(--primary-blue);
 }
 
 .hero-section .description {
@@ -178,7 +190,7 @@ body {
     text-decoration: none;
     border: var(--navbar-border);
     border-radius: 6px;
-    padding: 12px 20px;
+    padding: 10px 16px;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -192,12 +204,12 @@ body {
 }
 
 .hero-section .btns .view-project-btn {
-    background-color: var(--primary-orange);
-    border: 1.5px solid var(--primary-ornage);
+    background-color: var(--view-project-btn-bg);
+    border: var(--navbar-border);
 }
 
 .hero-section .btns .view-project-btn:hover {
-    background-color: var(--primary-hover-ornage);
+    background-color: var(--primary-hover-blue);
 }
 
 .hero-section .btns a .fa-envelope {
@@ -231,15 +243,9 @@ body {
 
 /* About Section */
 
-.about-section {
-    margin-top: 80px;
-    width: 100%;
-}
-
 .about-section>div {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
     gap: 50px;
 }
 
@@ -251,10 +257,11 @@ body {
     gap: 8px;
     width: fit-content;
     font-size: 14px;
+    margin-bottom: 20px;
 }
 
 .title span {
-    border: 3px solid var(--primary-orange);
+    border: 3px solid var(--primary-blue);
     border-radius: 50%;
 }
 
@@ -262,7 +269,7 @@ body {
     width: 49%;
 }
 
-.about-section>div h1 {
+.heading {
     font-weight: 500;
 }
 
@@ -281,7 +288,6 @@ body {
     background-color: transparent;
     color: var(--primary-text);
     border: var(--navbar-border);
-
     padding: 12px 20px;
     border-radius: 6px;
     cursor: pointer;
@@ -321,6 +327,30 @@ body {
     height: 22px;
 }
 
+/* Projects Section */
+
+.projects-section .projects-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.projects-section .projects-section-header .all-projects-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: var(--primary-text);
+    border: var(--navbar-border);
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.projects-section .projects-section-header .all-projects-btn:hover {
+    background-color: var(--navbar-bg);
+}
 
 
 @media (max-width: 600px) {
@@ -356,19 +386,15 @@ body {
         display: block;
     }
 
-    .hero-section .btns a {
-        padding: 12px 16px;
-    }
-
-
     .about-section>div {
         flex-direction: column;
         justify-content: space-between;
         margin-top: 20px;
         gap: 50px;
     }
-    .about-section > div .about,
-    .about-section > div .skills {
+
+    .about-section>div .about,
+    .about-section>div .skills {
         width: 100%;
     }
 }

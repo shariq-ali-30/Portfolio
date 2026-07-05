@@ -8,6 +8,7 @@
     --mobile-menu-hover-link-bg: #161c2a8a;
     --mobile-menu-active-link-bg: #161C2A;
     --view-project-btn-bg: #1D7EFF;
+    --btn-bg-hover: #060D19;
 
 
     --primary-text: #F8FAFC;
@@ -189,7 +190,7 @@ body {
 .navbar .mobile-menu .link {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     padding: 16px 20px;
     margin-bottom: 5px;
     width: 100%;
@@ -213,6 +214,11 @@ body {
 
 .navbar .mobile-menu .link i {
     font-size: 18px;
+}
+
+.navbar .mobile-menu .hr {
+    border-bottom: var(--navbar-border);
+    margin: 20px 0;
 }
 
 section {
@@ -303,13 +309,15 @@ section {
     font-size: 18px;
 }
 
-.hero-section .social-links {
+.hero-section .social-links,
+.navbar .mobile-menu .social-links {
     margin-top: 20px;
     display: flex;
     gap: 10px;
 }
 
-.hero-section .social-links a {
+.hero-section .social-links a,
+.navbar .mobile-menu .social-links a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -323,7 +331,8 @@ section {
     transition: color 0.2s ease;
 }
 
-.hero-section .social-links a:hover {
+.hero-section .social-links a:hover,
+.navbar .mobile-menu .social-links a:hover {
     color: var(--primary-text);
 }
 

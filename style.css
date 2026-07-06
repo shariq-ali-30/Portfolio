@@ -291,7 +291,7 @@ section {
     white-space: nowrap;
 }
 
-.hero-section .btns a {
+.hero-section .btns button {
     color: var(--primary-text);
     text-decoration: none;
     border: var(--navbar-border);
@@ -302,10 +302,12 @@ section {
     align-items: center;
     width: fit-content;
     gap: 8px;
+    background-color: transparent;
+    cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-.hero-section .btns a:hover {
+.hero-section .btns button:hover {
     background-color: var(--btn-bg-hover);
 }
 
@@ -730,8 +732,8 @@ section {
 }
 
 .footer i {
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     background-color: var(--primary-blue);
     display: flex;

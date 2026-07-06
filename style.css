@@ -58,12 +58,13 @@ body {
     top: 20px;
     width: 95%;
     max-width: 1450px;
+    height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--navbar-bg);
     border: var(--navbar-border);
-    padding: 8px 16px;
+    padding: 0 16px;
     border-radius: 10px;
     z-index: 1;
 }
@@ -465,7 +466,7 @@ section {
     background-color: var(--btn-bg-hover);
 }
 
-.projects-section .project-cards {
+.project-cards {
     margin-top: 50px;
     display: flex;
     justify-content: center;
@@ -473,17 +474,17 @@ section {
     gap: 25px 30px;
 }
 
-.projects-section .project-cards .project-card {
+.project-cards .project-card {
     position: relative;
     width: 450px;
-    height: 510px;
+    height: 480px;
     background-color: var(--project-card-bg);
     border: var(--project-card-border);
     border-radius: 14px;
     overflow: hidden;
 }
 
-.projects-section .project-cards .project-card .project-card-image {
+.project-cards .project-card .project-card-image {
     width: 100%;
     height: 253px;
     overflow: hidden;
@@ -492,65 +493,65 @@ section {
     border-width: 0.5px;
 }
 
-.projects-section .project-cards .project-card .project-card-image img {
+.project-cards .project-card .project-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.projects-section .project-cards .project-card .project-card-info {
+.project-cards .project-card .project-card-info {
     padding: 20px 18px;
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-title {
-    font-size: 30px;
+.project-cards .project-card .project-card-info .project-title {
+    font-size: 26px;
     font-weight: 600;
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-description {
-    font-size: 14px;
+.project-cards .project-card .project-card-info .project-description {
+    font-size: 12px;
     margin-top: 5px;
     color: var(--nav-links-text);
-    height: 62px;
+    height: 55px;
     overflow: auto;
     scrollbar-width: none;
 }
 
-.projects-section .project-cards .project-card .project-card-info .tech-badges {
-    margin-top: 13px;
+.project-cards .project-card .project-card-info .tech-badges {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.projects-section .project-cards .project-card .project-card-info .tech-badges span {
+.project-cards .project-card .project-card-info .tech-badges span {
     font-size: 12px;
     border-radius: 5px;
     padding: 3px 10px;
     cursor: default;
 }
 
-.projects-section .project-cards .project-card .project-card-info .tech-badges span.html {
+.project-cards .project-card .project-card-info .tech-badges span.html {
     background-color: var(--text-badge-bg-html);
     color: var(--text-badge-text-html);
 }
 
-.projects-section .project-cards .project-card .project-card-info .tech-badges span.css {
+.project-cards .project-card .project-card-info .tech-badges span.css {
     background-color: var(--text-badge-bg-css);
     color: var(--text-badge-text-css);
 }
 
-.projects-section .project-cards .project-card .project-card-info .tech-badges span.javascript {
+.project-cards .project-card .project-card-info .tech-badges span.javascript {
     background-color: var(--text-badge-bg-javascript);
     color: var(--text-badge-text-javascript);
 }
 
-.projects-section .project-cards .project-card .project-card-info .tech-badges span.bootstrap {
+.project-cards .project-card .project-card-info .tech-badges span.bootstrap {
     background-color: var(--text-badge-bg-bootstrap);
     color: var(--text-badge-text-bootstrap);
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-card-footer {
+.project-cards .project-card .project-card-info .project-card-footer {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -558,43 +559,92 @@ section {
     width: calc(100% - 36px);
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-card-footer .hr-x {
+.project-cards .project-card .project-card-info .project-card-footer .hr-x {
     border-bottom: var(--project-card-border);
     border-width: 1px;
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-card-footer .links {
+.project-cards .project-card .project-card-info .project-card-footer .links {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-card-footer .links a {
+.project-cards .project-card .project-card-info .project-card-footer .links a {
     margin-top: 3px;
     color: var(--nav-links-text);
-    font-size: 15px;
+    font-size: 13px;
     text-decoration: none;
     height: 55px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 8px;
     width: 49%;
     transition: color 0.2s ease;
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-card-footer .links a:hover {
+.project-cards .project-card .project-card-info .project-card-footer .links a:hover {
     color: var(--primary-text);
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-card-footer .links .hr-y {
+.project-cards .project-card .project-card-info .project-card-footer .links .hr-y {
     height: 58px;
     border-right: var(--project-card-border);
     border-width: 1px;
 }
 
-.projects-section .project-cards .project-card .project-card-info .project-card-footer .links a i {
-    font-size: 22px;
-    margin-left: 20px;
+.project-cards .project-card .project-card-info .project-card-footer .links a i {
+    font-size: 20px;
+}
+
+.all-projects-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background-color: var(--body-bg);
+    overflow: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+}
+
+.all-projects-container.active {
+    transform: translateX(0);
+}
+
+.all-projects-container .navbar {
+    position: sticky;
+}
+
+.all-projects-container .navbar > div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.all-projects-container .navbar > div i {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--nav-links-text);
+    border: var(--navbar-border);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.all-projects-container .navbar > div i:hover {
+    color: var(--primary-text);
+}
+
+.all-projects-container .navbar > div h2 {
+    font-weight: 600;
 }
 
 @media (max-width: 600px) {

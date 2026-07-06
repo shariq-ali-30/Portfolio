@@ -3,6 +3,9 @@ let crossIcon = document.querySelector(".close-menu-icon")
 let mobileMenuContainer = document.querySelector(".mobile-menu-container")
 let navLinks = document.querySelectorAll(".nav-links > span")
 let mobileMenuLinks = document.querySelectorAll(".mobile-menu-links > span")
+let viewAllProjectsBtn = document.querySelector(".all-projects-btn")
+let allProjectsContainer = document.querySelector(".all-projects-container")
+let backFromAllProjectsBtn = document.querySelector(".backFromAllProjectsBtn")
 
 function activeLinkHanler(links, clickedLink) {
     links.forEach(link => {
@@ -80,10 +83,24 @@ menuIcon.addEventListener("click", () => {
     mobileMenuContainer.classList.add("active")
     document.body.style.overflow = "hidden";
 })
+
 crossIcon.addEventListener("click", () => {
     mobileMenuContainer.classList.remove("active")
     document.body.style.overflow = "auto";
 })
+
 navLinks.forEach(link => link.addEventListener("click", () => { activeLinkHanler(navLinks, link) }))
+
 mobileMenuLinks.forEach(link => link.addEventListener("click", () => { activeLinkHanler(mobileMenuLinks, link) }))
+
 window.addEventListener("scroll", activeLinkOnScroll)
+
+viewAllProjectsBtn.addEventListener("click", () => {
+    allProjectsContainer.classList.add("active")
+    document.body.style.overflow = "hidden"
+})
+
+backFromAllProjectsBtn.addEventListener("click", () => {
+    allProjectsContainer.classList.remove("active")
+    document.body.style.overflow = "auto"
+})

@@ -15,6 +15,7 @@ let viewProjectsCta = document.getElementById("view-projects-cta")
 let contactMeCta = document.getElementById("contact-me-cta")
 let skillsContainer = document.getElementById("skillsContainer")
 let allProjectsParent = document.getElementById("all-projects-parent")
+let featuredProjectsParent = document.getElementById("featured-projects-parent")
 
 const skills = [
     {
@@ -67,7 +68,7 @@ const projects = [
     { title: "Apple Store Landing Page", description: "An Apple Store landing page concept built with HTML and CSS, featuring responsive layouts, custom typography, and modern product cards.", image: "images/css-assignment-7.png", technologies: ["HTML", "CSS"], githubLink: "https://github.com/shariq-ali-30/css-assignment-7", liveLink: "https://shariq-css-assignment-7.netlify.app", featured: false },
     { title: "Facebook Login Page Clone", description: "A responsive Facebook login page clone with custom form styling, responsive layouts, and a clean user interface.", image: "images/css-assignment-9.png", technologies: ["HTML", "CSS"], githubLink: "https://github.com/shariq-ali-30/css-assignment-9", liveLink: "https://shariq-css-assignment-9.netlify.app", featured: false },
     { title: "Saylani Welfare Clone", description: "A responsive Saylani Welfare landing page clone featuring donation sections, responsive grids, banner overlays, and structured content layouts.", image: "images/css-assignment-10.png", technologies: ["HTML", "CSS"], githubLink: "https://github.com/shariq-ali-30/css-assignment-10", liveLink: "https://shariq-css-assignment-10.netlify.app", featured: false },
-    { title: "Facebook Login & Signup Page Clone", description: "A responsive Facebook Login & Signup Page clone featuring clean form layouts, responsive design, and modern UI styling.", image: "images/css-assignment-12.png", technologies: ["HTML", "CSS"], githubLink: "https://github.com/shariq-ali-30/css-assignment-12", liveLink: "https://shariq-css-assignment-12.netlify.app", featured: false },
+    { title: "Facebook Signup Page Clone", description: "A responsive Facebook Login & Signup Page clone featuring clean form layouts, responsive design, and modern UI styling.", image: "images/css-assignment-12.png", technologies: ["HTML", "CSS"], githubLink: "https://github.com/shariq-ali-30/css-assignment-12", liveLink: "https://shariq-css-assignment-12.netlify.app", featured: false },
     { title: "Bootstrap E-Commerce Store", description: "A Bootstrap-powered e-commerce website featuring responsive navigation, carousel sliders, product cards, and interactive hover effects.", image: "images/css-assignment-13.png", technologies: ["HTML", "CSS", "Bootstrap"], githubLink: "https://github.com/shariq-ali-30/css-assignment-13", liveLink: "https://shariq-css-assignment-13.netlify.app", featured: false },
     { title: "Facebook Clone", description: "A responsive Facebook clone featuring user authentication, account registration, a dashboard, post creation with image previews, and JavaScript-powered interactions.", image: "images/css-assignment-14.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/css-assignment-14", liveLink: "https://shariq-css-assignment-14.netlify.app", featured: true },
     { title: "Upwork Clone", description: "A responsive Upwork landing page clone built with HTML and CSS, featuring modern layouts, pricing sections, responsive grids, and interactive UI elements.", image: "images/css-assignment-15.png", technologies: ["HTML", "CSS"], githubLink: "https://github.com/shariq-ali-30/css-assignment-15", liveLink: "https://shariq-css-assignment-15.netlify.app", featured: false },
@@ -77,11 +78,13 @@ const projects = [
     { title: "Background Color Flipper", description: "An interactive background color generator that dynamically changes page colors using JavaScript while updating text styles for better contrast.", image: "images/background-flipper.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/background-flipper", liveLink: "https://shariq-background-flipper.netlify.app", featured: false },
     { title: "Student ID Card Generator", description: "A responsive student ID card generator featuring form validation, image upload preview, automatic roll number generation, and SweetAlert2 notifications.", image: "images/id-card-generator.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/student-id-card-generator", liveLink: "https://shariq-student-id-card-generator.netlify.app", featured: true },
     { title: "Profile Card Slider", description: "A responsive profile card slider built with JavaScript, featuring dynamic profile rendering, navigation controls, and smooth user interactions.", image: "images/profile-card-slider.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/profile-card-slider", liveLink: "https://shariq-profile-card-slider.netlify.app", featured: false },
-    { title: "Todo List Application", description: "A responsive Todo List application with CRUD functionality, localStorage persistence, duplicate task prevention, and Light/Dark theme support.", image: "images/todo-list.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/todo-list", liveLink: "https://shariq-todo-list.netlify.app", featured: true },
-    { title: "Restaurant Menu Application", description: "A responsive restaurant menu application with category filtering, live search, smooth scrolling, dynamic rendering, and localStorage-based theme persistence.", image: "images/restaurant-menu.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/restaurant-menu", liveLink: "https://shariq-restaurant-menu.netlify.app", featured: true }
+    { title: "Todo List Application", description: "A responsive Todo List application with CRUD functionality, localStorage persistence, duplicate task prevention, and Light/Dark theme support.", image: "images/todo-list-app.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/todo-list-app", liveLink: "https://shariq-todo-list-app.netlify.app", featured: true },
+    { title: "Restaurant Menu Application", description: "A responsive restaurant menu application with category filtering, live search, smooth scrolling, dynamic rendering, and localStorage-based theme persistence.", image: "images/restaurant-menu-application.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/restaurant-menu-application", liveLink: "https://shariq-restaurant-menu-application.netlify.app", featured: true }
 ]
 projects.reverse()
-projects.forEach(project => {
+
+function displayProjects(projectsArr, projectsParent) {
+    projectsArr.forEach(project => {
     let projectHTML = document.createElement("div")
     projectHTML.classList.add("project-card")
 
@@ -108,7 +111,7 @@ projects.forEach(project => {
     } else {
         var bootstrapBadge = ""
     }
-    
+
     projectHTML.innerHTML = `<div class="project-card-image">
                                 <img src=${project.image}>
                             </div>
@@ -130,9 +133,13 @@ projects.forEach(project => {
                                 </div>
                             </div>
                             </div>`
-
-    allProjectsParent.appendChild(projectHTML)
+    projectsParent.appendChild(projectHTML)
 })
+}
+displayProjects(projects, allProjectsParent)
+let featuredProjects = projects.filter(project => project.featured == true)
+displayProjects(featuredProjects, featuredProjectsParent)
+
 
 function activeLinkHanler(links, clickedLink) {
     links.forEach(link => {
@@ -179,7 +186,7 @@ function activeLinkOnScroll() {
             })
             navLinks[1].classList.add("active")
             mobileMenuLinks[1].classList.add("active")
-        } else if (window.scrollY >= projectsSection.offsetTop - 120 && window.scrollY < contactSection.offsetTop - 600) {
+        } else if (window.scrollY >= projectsSection.offsetTop - 120 && window.scrollY < contactSection.offsetTop - 300) {
             navLinks.forEach(link => {
                 link.classList.remove("active")
             })
@@ -188,7 +195,7 @@ function activeLinkOnScroll() {
             })
             navLinks[2].classList.add("active")
             mobileMenuLinks[2].classList.add("active")
-        } else if (window.scrollY > contactSection.offsetTop - 600) {
+        } else if (window.scrollY > contactSection.offsetTop - 300) {
             navLinks.forEach(link => {
                 link.classList.remove("active")
             })

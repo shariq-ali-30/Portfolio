@@ -491,7 +491,7 @@ section {
 
 .project-cards .project-card .project-card-image {
     width: 100%;
-    height: 253px;
+    height: fit-content;
     overflow: hidden;
     background-color: var(--project-card-image-bg);
     border-bottom: var(--project-card-border);
@@ -499,9 +499,8 @@ section {
 }
 
 .project-cards .project-card .project-card-image img {
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .project-cards .project-card .project-card-info {
@@ -679,17 +678,16 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 15px;
 }
 
 .contact-section .right div {
+    flex-grow: 1;
     padding: 15px;
     border: var(--navbar-border);
     border-radius: 8px;
     white-space: nowrap;
-    width: 100%;
-    max-width: 230px;
 }
 
 .contact-section .right div i {
@@ -742,6 +740,13 @@ section {
     cursor: pointer;
 }
 
+@media (max-width: 800px) {
+
+    .contact-section .right {
+        flex-wrap: wrap;
+    }
+}
+
 @media (max-width: 600px) {
 
     .container {
@@ -750,7 +755,7 @@ section {
 
     section {
         width: 100%;
-        padding: 25px 20px;
+        padding: 22px 18px;
         border-width: 1.5px 0;
         border-radius: 0;
     }

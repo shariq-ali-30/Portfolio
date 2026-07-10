@@ -25,7 +25,7 @@
 
     --navbar-border: 1.5px solid #172133;
     --section-border: 1.5px solid #152338;
-    --project-card-border: 2px solid #1A2438;
+    --project-card-border: 1.5px solid #1A2438;
 }
 
 * {
@@ -34,6 +34,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
 }
 
 body {
@@ -314,6 +315,7 @@ section {
 .hero-section .btns .view-project-btn {
     background-color: var(--view-project-btn-bg);
     border: var(--navbar-border);
+    border-color: var(--view-project-btn-bg);
 }
 
 .hero-section .btns .view-project-btn:hover {
@@ -350,7 +352,6 @@ section {
 .navbar .mobile-menu .social-links a:hover {
     color: var(--primary-text);
 }
-
 
 /* About Section */
 
@@ -425,7 +426,7 @@ section {
 
 .about-section>div .skills div span {
     border: var(--navbar-border);
-    background-color: var(--navbar-bg);
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -757,6 +758,7 @@ section {
         width: 100%;
         padding: 22px 18px;
         border-width: 1.5px 0;
+        margin-top: 30px;
         border-radius: 0;
     }
 
@@ -804,6 +806,15 @@ section {
     .about-section>div .about,
     .about-section>div .skills {
         width: 100%;
+    }
+
+    .project-cards .project-card {
+        height: auto;
+        padding-bottom: 55px;
+    }
+
+    .project-cards .project-card .project-card-info .project-description {
+        min-height: fit-content;
     }
 
     .contact-section .right {

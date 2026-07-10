@@ -88,29 +88,9 @@ function displayProjects(projectsArr, projectsParent) {
     let projectHTML = document.createElement("div")
     projectHTML.classList.add("project-card")
 
-    if (project.technologies.includes("HTML")) {
-        var htmlBadge = `<span class="html">HTML</span>`
-    } else {
-        var htmlBadge = ""
-    }
-
-    if (project.technologies.includes("CSS")) {
-        var cssBadge = `<span class="css">CSS</span>`
-    } else {
-        var cssBadge = ""
-    }
-
-    if (project.technologies.includes("JavaScript")) {
-        var javascriptBadge = `<span class="javascript">JavaScript</span>`
-    } else {
-        var javascriptBadge = ""
-    }
-
-    if (project.technologies.includes("Bootstrap")) {
-        var bootstrapBadge = `<span class="bootstrap">Bootstrap</span>`
-    } else {
-        var bootstrapBadge = ""
-    }
+    let techBadges = project.technologies.map(tech => {
+        return `<span class="${tech.toLowerCase()}">${tech}</span>`
+    }).join("")
 
     projectHTML.innerHTML = `<div class="project-card-image">
                                 <img src=${project.image}>
@@ -119,10 +99,7 @@ function displayProjects(projectsArr, projectsParent) {
                                 <h2 class="project-title">${project.title}</h2>
                             <p class="project-description">${project.description}</p>
                             <div class="tech-badges">
-                                ${htmlBadge}
-                                ${cssBadge}
-                                ${javascriptBadge}
-                                ${bootstrapBadge}
+                                ${techBadges}
                             </div>
                             <div class="project-card-footer">
                                 <div class="hr-x"></div>
@@ -149,7 +126,7 @@ function activeLinkHanler(links, clickedLink) {
 
     if (clickedLink.innerText.toLowerCase() == "home") {
         window.scrollTo({
-            top: homeSection.offsetTop - 120
+            top: 0
         })
     } else if (clickedLink.innerText.toLowerCase() == "about") {
         window.scrollTo({
@@ -186,7 +163,7 @@ function activeLinkOnScroll() {
             })
             navLinks[1].classList.add("active")
             mobileMenuLinks[1].classList.add("active")
-        } else if (window.scrollY >= projectsSection.offsetTop - 120 && window.scrollY < contactSection.offsetTop - 300) {
+        } else if (window.scrollY >= projectsSection.offsetTop - 120 && window.scrollY < contactSection.offsetTop - 600) {
             navLinks.forEach(link => {
                 link.classList.remove("active")
             })
@@ -195,7 +172,7 @@ function activeLinkOnScroll() {
             })
             navLinks[2].classList.add("active")
             mobileMenuLinks[2].classList.add("active")
-        } else if (window.scrollY > contactSection.offsetTop - 300) {
+        } else if (window.scrollY > contactSection.offsetTop - 600) {
             navLinks.forEach(link => {
                 link.classList.remove("active")
             })
@@ -205,7 +182,7 @@ function activeLinkOnScroll() {
             navLinks[3].classList.add("active")
             mobileMenuLinks[3].classList.add("active")
         }
-    }, 600);
+    }, 650);
 }
 activeLinkOnScroll()
 
@@ -242,4 +219,4 @@ scrollTopBtn.addEventListener("click", () => window.scrollTo({ top: 0 }))
 
 viewProjectsCta.addEventListener("click", () => window.scrollTo({ top: projectsSection.offsetTop - 120 }))
 
-contactMeCta.addEventListener("click", () => window.scrollTo({ top: contactSection.offsetTop }))
+contactMeCta.addEventListener("click", () => window.scrollTo({ top: contactSection.offsetTop - 120 }))

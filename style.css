@@ -34,7 +34,23 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
-    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--section-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #243248;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #384861;
 }
 
 body {
@@ -116,12 +132,6 @@ body {
 .navbar .nav-links .link.active span {
     visibility: visible;
     width: 25px;
-}
-
-.navbar .btns {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .navbar .btns .menu-icon {
@@ -313,6 +323,7 @@ section {
 }
 
 .hero-section .btns .view-project-btn {
+    color: #F8FAFC;
     background-color: var(--view-project-btn-bg);
     border: var(--navbar-border);
     border-color: var(--view-project-btn-bg);
@@ -737,6 +748,7 @@ section {
     width: 40px;
     border-radius: 50%;
     background-color: var(--primary-blue);
+    color: #F8FAFC;
     display: flex;
     justify-content: center;
     align-items: center;

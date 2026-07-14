@@ -58,7 +58,6 @@ body {
     background-color: var(--body-bg);
     color: var(--primary-text);
     padding-bottom: 135px;
-    padding-top: 20px;
 }
 
 .container {
@@ -137,7 +136,6 @@ body {
 
 .navbar .btns .menu-icon {
     display: none;
-    font-size: 22px;
 }
 
 .navbar button {
@@ -147,7 +145,7 @@ body {
     color: var(--nav-links-text);
     border: var(--navbar-border);
     border-radius: 8px;
-    font-size: 20px;
+    font-size: 24gpx;
     cursor: pointer;
     transition: color 0.2s ease;
 }
@@ -801,6 +799,7 @@ section {
     .hero-section {
         padding-left: 0;
         padding: 0 20px;
+        height: 85vh;
     }
 
     .hero-section .intro {

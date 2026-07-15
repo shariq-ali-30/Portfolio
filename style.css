@@ -145,7 +145,7 @@ body {
     color: var(--nav-links-text);
     border: var(--navbar-border);
     border-radius: 8px;
-    font-size: 24gpx;
+    font-size: 24px;
     cursor: pointer;
     transition: color 0.2s ease;
 }

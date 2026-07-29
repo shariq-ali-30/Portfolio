@@ -76,28 +76,29 @@ const projects = [
     { title: "Salt'n Pepper Restaurant Clone", description: "A fully responsive clone of the Salt'n Pepper Restaurant website built with HTML, CSS, and Bootstrap. Features responsive navigation, franchise sections, modern layouts, and mobile-friendly design.", image: "images/html-css-hackathon.png", technologies: ["HTML", "CSS", "Bootstrap"], githubLink: "https://github.com/shariq-ali-30/html-css-hackathon", liveLink: "https://shariq-html-css-hackathon.vercel.app", featured: false },
     { title: "Random Password Generator", description: "A responsive password generator that creates secure random passwords using JavaScript with a clean and user-friendly interface.", image: "images/password-generator.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/random-password-generator", liveLink: "https://shariq-random-password-generator.vercel.app", featured: false },
     { title: "Background Color Flipper", description: "An interactive background color generator that dynamically changes page colors using JavaScript while updating text styles for better contrast.", image: "images/background-flipper.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/background-flipper", liveLink: "https://shariq-background-flipper.vercel.app", featured: false },
-    { title: "Student ID Card Generator", description: "A responsive student ID card generator featuring form validation, image upload preview, automatic roll number generation, and SweetAlert2 notifications.", image: "images/id-card-generator.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/student-id-card-generator", liveLink: "https://shariq-student-id-card-generator.vercel.app", featured: true },
+    { title: "Student ID Card Generator", description: "A responsive student ID card generator featuring form validation, image upload preview, automatic roll number generation, and SweetAlert2 notifications.", image: "images/id-card-generator.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/student-id-card-generator", liveLink: "https://shariq-student-id-card-generator.vercel.app", featured: false },
     { title: "Profile Card Slider", description: "A responsive profile card slider built with JavaScript, featuring dynamic profile rendering, navigation controls, and smooth user interactions.", image: "images/profile-card-slider.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/profile-card-slider", liveLink: "https://shariq-profile-card-slider.vercel.app", featured: false },
     { title: "Todo List Application", description: "A responsive Todo List application with CRUD functionality, localStorage persistence, duplicate task prevention, and Light/Dark theme support.", image: "images/todo-list-app.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/todo-list-app", liveLink: "https://shariq-todo-list-app.vercel.app", featured: true },
     { title: "Restaurant Menu Application", description: "A responsive restaurant menu application with category filtering, live search, smooth scrolling, dynamic rendering, and localStorage-based theme persistence.", image: "images/restaurant-menu-application.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/restaurant-menu-application", liveLink: "https://shariq-restaurant-menu-application.vercel.app", featured: true },
-    { title: "Personal Portfolio", description: "A modern and responsive personal portfolio showcasing my skills, projects, contact information with smooth navigation, dynamic project rendering, and a clean interface.", image: "images/portfolio.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/portfolio", liveLink: "https://shariq-ali.vercel.app", featured: true }
+    { title: "Personal Portfolio", description: "A modern and responsive personal portfolio showcasing my skills, projects, contact information with smooth navigation, dynamic project rendering, and a clean interface.", image: "images/portfolio.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/portfolio", liveLink: "https://shariq-ali.vercel.app", featured: true },
+    { title: "MaintainIQ - Asset Maintenance Management System", description: "A modern asset maintenance platform for tracking assets, managing maintenance issues, monitoring equipment status, and streamlining maintenance workflows through an intuitive dashboard.", image: "images/maintainiq.png", technologies: ["HTML", "CSS", "JavaScript"], githubLink: "https://github.com/shariq-ali-30/maintainiq-hackathon-task", liveLink: "https://shariq-maintainiq.vercel.app", featured: true }
 ]
 projects.reverse()
 
 function displayProjects(projectsArr, projectsParent) {
     projectsArr.forEach(project => {
-    let projectHTML = document.createElement("div")
-    projectHTML.classList.add("project-card")
+        let projectHTML = document.createElement("div")
+        projectHTML.classList.add("project-card")
 
-    let techBadges = project.technologies.map(tech => {
-        return `<span class="${tech.toLowerCase()}">${tech}</span>`
-    }).join("")
+        let techBadges = project.technologies.map(tech => {
+            return `<span class="${tech.toLowerCase()}">${tech}</span>`
+        }).join("")
 
-    projectHTML.innerHTML = `<div class="project-card-image">
+        projectHTML.innerHTML = `<div class="project-card-image">
                                 <img src=${project.image}>
                             </div>
                             <div class="project-card-info">
-                                <h2 class="project-title">${project.title}</h2>
+                                <h2 class="project-title" title="${project.title}">${project.title}</h2>
                             <p class="project-description">${project.description}</p>
                             <div class="tech-badges">
                                 ${techBadges}
@@ -111,13 +112,13 @@ function displayProjects(projectsArr, projectsParent) {
                                 </div>
                             </div>
                             </div>`
-    projectsParent.appendChild(projectHTML)
-})
+        projectsParent.appendChild(projectHTML)
+    })
 }
 displayProjects(projects, allProjectsParent)
+
 let featuredProjects = projects.filter(project => project.featured == true)
 displayProjects(featuredProjects, featuredProjectsParent)
-
 
 function activeLinkHanler(links, clickedLink) {
     links.forEach(link => {

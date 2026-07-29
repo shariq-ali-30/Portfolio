@@ -37,20 +37,20 @@
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--section-bg);
+    background: var(--section-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #243248;
-  border-radius: 999px;
+    background: #243248;
+    border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #384861;
+    background: #384861;
 }
 
 body {
@@ -531,6 +531,10 @@ section {
 .project-cards .project-card .project-card-info .project-title {
     font-size: 24px;
     font-weight: 600;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .project-cards .project-card .project-card-info .project-description {
@@ -811,6 +815,7 @@ section {
         padding-left: 0;
         padding: 0 20px;
         height: 85vh;
+        margin-top: 0;
     }
 
     .hero-section .intro {
@@ -844,6 +849,7 @@ section {
 
     .project-cards .project-card .project-card-info .project-title {
         font-size: 19px;
+        white-space: initial;
     }
 
     .project-cards .project-card .project-card-info .project-description {

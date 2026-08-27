@@ -16,6 +16,7 @@
     --text-badge-bg-javascript: #3A3408;
     --text-badge-bg-bootstrap: #2A1542;
     --text-badge-bg-react: #102A43;
+    --text-badge-bg-tailwind: #0F2F35;
 
     --primary-text: #F8FAFC;
     --nav-links-text: #A2ACB8;
@@ -24,6 +25,7 @@
     --text-badge-text-javascript: #FACC15;
     --text-badge-text-bootstrap: #A855F7;
     --text-badge-text-react: #61DAFB;
+    --text-badge-text-tailwind: #38BDF8;
 
     --navbar-border: 1.5px solid #172133;
     --section-border: 1.5px solid #152338;
@@ -585,6 +587,11 @@ section {
 .project-cards .project-card .project-card-info .tech-badges span.react {
     background-color: var(--text-badge-bg-react);
     color: var(--text-badge-text-react);
+}
+
+.project-cards .project-card .project-card-info .tech-badges span.tailwind {
+    background-color: var(--text-badge-bg-tailwind);
+    color: var(--text-badge-text-tailwind);
 }
 
 .project-cards .project-card .project-card-info .project-card-footer {

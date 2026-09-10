@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://shariq-ali.vercel.app/sitemap.xml

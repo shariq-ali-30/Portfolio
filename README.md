@@ -1,47 +1,16 @@
-# Personal Portfolio
+# React + Vite
 
-## About The Project
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This project is a Personal Portfolio website built using HTML, CSS, and JavaScript.
+Currently, two official plugins are available:
 
-The purpose of this project was to showcase my skills, featured projects, and contact information while practicing modern UI design, responsive layouts, DOM manipulation, and creating a professional portfolio website for potential employers and clients.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Technologies Used
+## React Compiler
 
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- Font Awesome
-- Google Fonts (Poppins)
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Features
+## Expanding the ESLint configuration
 
-- Modern and responsive portfolio design
-- Hero section with introduction and call-to-action buttons
-- About Me section with skills showcase
-- Dynamic skills rendering using JavaScript
-- Featured Projects section with project cards
-- View All Projects page with dynamic project listing
-- Responsive navigation bar with mobile menu
-- Smooth scrolling navigation
-- Contact section with email, GitHub, and LinkedIn links
-- Social media integration
-- Scroll-to-top button
-- Responsive design for mobile, tablet, and desktop
-- Clean and organized UI with hover effects and animations
-
-## What I Learned
-
-Through this project, I learned:
-
-- How to build a professional personal portfolio website
-- How to create responsive layouts for different screen sizes
-- How to manipulate the DOM to display dynamic content
-- How to organize a large project into reusable sections
-- How to implement a responsive mobile navigation menu
-- How to create interactive user interfaces using JavaScript
-- How to showcase projects and skills in a professional way
-
-## Author
-
-**Shariq Ali**
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

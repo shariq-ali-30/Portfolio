@@ -40,7 +40,11 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+}
+
+html {
   scroll-behavior: smooth;
+  scroll-padding-top: 119px;
 }
 
 ::-webkit-scrollbar {
@@ -246,7 +250,7 @@ body {
 }
 
 .navbar .mobile-menu .link i {
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .navbar .mobile-menu .hr {
@@ -266,7 +270,8 @@ section {
 /* Hero Section */
 
 .hero-section {
-  height: 80vh;
+  height: 82vh;
+  max-height: 700px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -316,7 +321,7 @@ section {
   white-space: nowrap;
 }
 
-.hero-section .btns button {
+.hero-section .btns a {
   color: var(--primary-text);
   text-decoration: none;
   border: var(--navbar-border);
@@ -332,7 +337,7 @@ section {
   transition: background-color 0.2s ease;
 }
 
-.hero-section .btns button:hover {
+.hero-section .btns a:hover {
   background-color: var(--btn-bg-hover);
 }
 
@@ -899,5 +904,9 @@ section {
 @media (max-width: 400px) {
   * {
     cursor: default !important;
+  }
+
+  html {
+    scroll-padding-top: 70px;
   }
 }

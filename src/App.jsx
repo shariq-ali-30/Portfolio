@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./Firebase/firebase.js";
 import "./App.css";
 
 function App() {
@@ -6,65 +8,88 @@ function App() {
   const aboutSection = useRef();
   const projectsSection = useRef();
   const contactSection = useRef();
-  const navLinks = useRef().current.children
-  const scrollTimeout = useRef();
+  const navLinks = useRef();
+  const mobileMenuLinks = useRef();
 
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [skills, setSkills] = useState([]);
+  const [projects, setProjects] = useState([]);
+
+  skills.reverse();
 
   function activeLinkOnScroll() {
-    clearTimeout(scrollTimeout.current);
-    scrollTimeout.current = setTimeout(() => {
-      if (
-        window.scrollY >= 0 &&
-        window.scrollY < aboutSection.current.offsetTop - 120
-      ) {
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-        mobileMenuLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-        navLinks[0].classList.add("active");
-        mobileMenuLinks[0].classList.add("active");
-      } else if (
-        window.scrollY >= aboutSection.current.offsetTop - 120 &&
-        window.scrollY < projectsSection.current.offsetTop - 120
-      ) {
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-        mobileMenuLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-        navLinks[1].classList.add("active");
-        mobileMenuLinks[1].classList.add("active");
-      } else if (
-        window.scrollY >= projectsSection.current.offsetTop - 120 &&
-        window.scrollY < contactSection.current.offsetTop - 600
-      ) {
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-        mobileMenuLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-        navLinks[2].classList.add("active");
-        mobileMenuLinks[2].classList.add("active");
-      } else if (window.scrollY > contactSection.current.offsetTop - 600) {
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-        mobileMenuLinks.forEach((link) => {
-          link.classList.remove("active");
-        });
-        navLinks[3].classList.add("active");
-        mobileMenuLinks[3].classList.add("active");
-      }
-    }, 650);
+    if (
+      window.scrollY >= 0 &&
+      window.scrollY < aboutSection.current.offsetTop - 120
+    ) {
+      navLinks.current.childNodes.forEach((link) => {
+        link.classList.remove("active");
+      });
+      mobileMenuLinks.current.childNodes.forEach((link) => {
+        link.classList.remove("active");
+      });
+      navLinks.current.childNodes[0].classList.add("active");
+      mobileMenuLinks.current.childNodes[0].classList.add("active");
+    } else if (
+      window.scrollY >= aboutSection.current.offsetTop - 120 &&
+      window.scrollY < projectsSection.current.offsetTop - 120
+    ) {
+      navLinks.current.childNodes.forEach((link) => {
+        link.classList.remove("active");
+      });
+      mobileMenuLinks.current.childNodes.forEach((link) => {
+        link.classList.remove("active");
+      });
+      navLinks.current.childNodes[1].classList.add("active");
+      mobileMenuLinks.current.childNodes[1].classList.add("active");
+    } else if (
+      window.scrollY >= projectsSection.current.offsetTop - 120 &&
+      window.scrollY < contactSection.current.offsetTop - 600
+    ) {
+      navLinks.current.childNodes.forEach((link) => {
+        link.classList.remove("active");
+      });
+      mobileMenuLinks.current.childNodes.forEach((link) => {
+        link.classList.remove("active");
+      });
+      navLinks.current.childNodes[2].classList.add("active");
+      mobileMenuLinks.current.childNodes[2].classList.add("active");
+    } else if (window.scrollY > contactSection.current.offsetTop - 600) {
+      navLinks.current.childNodes.forEach((link) => {
+        link.classList.remove("active");
+      });
+      mobileMenuLinks.current.childNodes.forEach((link) => {
+        link.classList.remove("active");
+      });
+      navLinks.current.childNodes[3].classList.add("active");
+      mobileMenuLinks.current.childNodes[3].classList.add("active");
+    }
+  }
+
+  async function getSkills() {
+    const querySnapshot = await getDocs(collection(db, "skills"));
+    let skillsList = querySnapshot.docs.map((doc) => {
+      return { id: doc.id, ...doc.data() };
+    });
+    setSkills(skillsList);
+  }
+
+  async function getProjects() {
+    const querySnapshot = await getDocs(collection(db, "skills"));
+    let projectsList = querySnapshot.docs.map((doc) => {
+      return { id: doc.id, ...doc.data() };
+    });
+    setProjects(projectsList);
   }
 
   useEffect(() => {
-    activeLinkOnScroll()
-  }, [window.scrollY]);
+    activeLinkOnScroll();
+    getSkills();
+    getProjects();
+  }, []);
+
+  window.addEventListener("scroll", activeLinkOnScroll);
 
   return (
     <div className="container">
@@ -73,35 +98,40 @@ function App() {
           SA<span>.</span>
         </h1>
         <div className="nav-links" ref={navLinks}>
-          <span className="link active">
+          <a href="#home" className="link active">
             Home <span></span>
-          </span>
-          <span className="link">
+          </a>
+          <a href="#about" className="link">
             About <span></span>
-          </span>
-          <span className="link">
+          </a>
+          <a href="#projects" className="link">
             Projects <span></span>
-          </span>
-          <span className="link">
+          </a>
+          <a href="#contact" className="link">
             Contact <span></span>
-          </span>
+          </a>
         </div>
-        <div className="mobile-menu-container">
+        <div
+          className={`mobile-menu-container ${showMobileMenu ? "active" : ""}`}
+        >
           <div className="mobile-menu">
-            <i className="fa-solid fa-xmark close-menu-icon"></i>
-            <div className="mobile-menu-links">
-              <span className="link active">
-                <i className="fa-solid fa-house-chimney"></i> Home
-              </span>
-              <span className="link">
-                <i className="fa-solid fa-user"></i> About
-              </span>
-              <span className="link">
-                <i className="fa-solid fa-briefcase"></i> Projects
-              </span>
-              <span className="link">
-                <i className="fa-solid fa-envelope"></i> Contact
-              </span>
+            <i
+              onClick={() => setShowMobileMenu(false)}
+              className="fa-solid fa-xmark"
+            ></i>
+            <div className="mobile-menu-links" ref={mobileMenuLinks}>
+              <a href="#home" className="link active">
+                <i className="ph-bold ph-house"></i> Home
+              </a>
+              <a href="#about" className="link">
+                <i className="ph-bold ph-user"></i> About
+              </a>
+              <a href="#projects" className="link">
+                <i className="ph-bold ph-briefcase"></i> Projects
+              </a>
+              <a href="#contact" className="link">
+                <i className="ph-bold ph-envelope"></i> Contact
+              </a>
               <div className="hr"></div>
               <div className="social-links">
                 <a href="https://github.com/shariq-ali-30" target="_blank">
@@ -122,7 +152,7 @@ function App() {
           </div>
         </div>
         <div className="btns">
-          <button className="menu-icon">
+          <button className="menu-icon" onClick={() => setShowMobileMenu(true)}>
             <i className="fa-solid fa-bars"></i>
           </button>
         </div>
@@ -143,12 +173,16 @@ function App() {
         </p>
 
         <div className="btns">
-          <button className="view-project-btn" id="view-projects-cta">
+          <a
+            href="#projects"
+            className="view-project-btn"
+            id="view-projects-cta"
+          >
             View Projects <i className="fa-solid fa-arrow-right"></i>
-          </button>
-          <button id="contact-me-cta">
+          </a>
+          <a href="#contact" id="contact-me-cta">
             Contact me <i className="fa-regular fa-envelope"></i>
-          </button>
+          </a>
         </div>
 
         <div className="social-links">
@@ -184,10 +218,12 @@ function App() {
           <div className="skills">
             <h1 className="heading">Skills</h1>
             <div id="skillsContainer">
-              {/* <span>
-                            <img src="images/html.png" />
-                            HTML
-                        </span> */}
+              {skills?.map((skill, idx) => (
+                <span key={idx}>
+                  <img src={skill.image} />
+                  {skill.name}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -202,7 +238,10 @@ function App() {
             <h1 className="heading">My Projects</h1>
           </div>
           <div className="right">
-            <button className="all-projects-btn">
+            <button
+              onClick={() => setShowAllProjects(true)}
+              className="all-projects-btn"
+            >
               View All Projects <i className="fa-solid fa-arrow-right"></i>
             </button>
           </div>
@@ -236,11 +275,16 @@ function App() {
         </div>
       </section>
 
-      <div className="all-projects-container">
+      <div
+        className={`all-projects-container ${showAllProjects ? "active" : ""}`}
+      >
         <div className="container">
           <nav className="navbar">
             <div>
-              <i className="fa-solid fa-arrow-left backFromAllProjectsBtn"></i>
+              <i
+                onClick={() => setShowAllProjects(false)}
+                className="fa-solid fa-arrow-left"
+              ></i>
               <h2>All Projects</h2>
             </div>
           </nav>

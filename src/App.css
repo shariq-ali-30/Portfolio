@@ -71,7 +71,7 @@ body {
 }
 
 .container {
-  max-width: 1500px;
+  max-width: 1800px;
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -84,7 +84,7 @@ body {
   position: sticky;
   top: 20px;
   width: 105%;
-  max-width: 1550px;
+  max-width: 1900px;
   height: 64px;
   display: flex;
   justify-content: space-between;
@@ -271,8 +271,8 @@ section {
 /* Hero Section */
 
 .hero-section {
-  height: 82vh;
-  max-height: 700px;
+  height: calc(100vh - 100px);
+  max-height: 800px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -1028,6 +1028,382 @@ section {
 
 .back-btn:hover {
   color: var(--primary-text);
+}
+
+/* Admin Page */
+
+.admin-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 25px 20px 40px;
+  background-color: var(--body-bg);
+}
+
+.admin-container {
+  width: min(1800px, 100%);
+  margin: 0 auto;
+}
+
+/* ================= MAIN GRID ================= */
+
+.admin-content {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 18px;
+  align-items: start;
+}
+
+/* ================= CARD ================= */
+
+.admin-card {
+  margin-top: 0;
+  padding: 0;
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--section-bg);
+  border: var(--section-border);
+  border-radius: 10px;
+}
+
+.admin-card-header {
+  min-height: 75px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.admin-heading-icon {
+  width: 37px;
+  height: 37px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-blue);
+  background-color: rgba(45, 140, 255, 0.08);
+  border: 1px solid rgba(45, 140, 255, 0.3);
+  border-radius: 7px;
+  font-size: 20px;
+}
+
+.admin-heading h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.admin-heading h2 span {
+  font-size: 12px;
+  color: var(--nav-links-text);
+  font-weight: 400;
+}
+
+.admin-add-btn {
+  height: 34px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--view-project-btn-bg);
+  border-radius: 5px;
+  background-color: var(--view-project-btn-bg);
+  color: var(--primary-text);
+  font-family: inherit;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.admin-line {
+  width: calc(100% - 32px);
+  margin: 0 auto;
+  border-bottom: var(--section-border);
+}
+
+/* ================= PROJECT ROW ================= */
+
+.admin-project-row {
+  min-height: 84px;
+  margin: 0 16px;
+  padding: 11px 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-bottom: 1px solid #142036;
+}
+
+.admin-project-row:last-child {
+  border-bottom: none;
+}
+
+.admin-project-image {
+  width: 72px;
+  height: 50px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: var(--project-card-image-bg);
+  border: 1px solid #1a273a;
+  border-radius: 6px;
+}
+
+.admin-project-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.admin-project-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-project-info h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.admin-techs {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.admin-tech {
+  padding: 4px 9px;
+  border-radius: 12px;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.admin-tech.html {
+  background-color: var(--text-badge-bg-html);
+  color: var(--text-badge-text-html);
+}
+
+.admin-tech.css {
+  background-color: var(--text-badge-bg-css);
+  color: var(--text-badge-text-css);
+}
+
+.admin-tech.javascript {
+  background-color: var(--text-badge-bg-javascript);
+  color: var(--text-badge-text-javascript);
+}
+
+.admin-tech.bootstrap {
+  background-color: var(--text-badge-bg-bootstrap);
+  color: var(--text-badge-text-bootstrap);
+}
+
+.admin-tech.react {
+  background-color: var(--text-badge-bg-react);
+  color: var(--text-badge-text-react);
+}
+
+.admin-tech.tailwind {
+  background-color: var(--text-badge-bg-tailwind);
+  color: var(--text-badge-text-tailwind);
+}
+
+/* ================= ACTIONS ================= */
+
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.admin-action {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  color: var(--primary-text);
+  font-size: 18px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.admin-action.edit {
+  background-color: rgba(45, 140, 255, 0.08);
+  border: 1px solid rgba(45, 140, 255, 0.3);
+  color: var(--primary-blue);
+}
+
+.admin-action.delete {
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  background: rgba(220, 38, 38, 0.08);
+  color: #dc2626;
+}
+
+/* ================= SKILLS ================= */
+
+.admin-skill-row {
+  min-height: 69px;
+  margin: 0 16px;
+  padding: 9px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #142036;
+}
+
+.admin-skill-row:last-child {
+  border-bottom: none;
+}
+
+.admin-skill-info {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.admin-skill-info h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.admin-skill-icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  font-size: 21px;
+}
+
+.admin-skill-icon.html-icon {
+  color: var(--text-badge-text-html);
+  background-color: var(--text-badge-bg-html);
+}
+
+.admin-skill-icon.css-icon {
+  color: var(--text-badge-text-css);
+  background-color: var(--text-badge-bg-css);
+}
+
+.admin-skill-icon.js-icon {
+  color: var(--text-badge-text-javascript);
+  background-color: var(--text-badge-bg-javascript);
+}
+
+.admin-skill-icon.bootstrap-icon {
+  color: var(--text-badge-text-bootstrap);
+  background-color: var(--text-badge-bg-bootstrap);
+}
+
+.admin-skill-icon.react-icon {
+  color: var(--text-badge-text-react);
+  background-color: var(--text-badge-bg-react);
+}
+
+.admin-skill-icon.tailwind-icon {
+  color: var(--text-badge-text-tailwind);
+  background-color: var(--text-badge-bg-tailwind);
+}
+
+@media (max-width: 1000px) {
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-page {
+    padding: 15px 0 25px;
+  }
+
+  .admin-navbar {
+    height: 58px;
+    padding: 0 14px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .admin-logo {
+    font-size: 18px;
+  }
+
+  .admin-user span {
+    display: none;
+  }
+
+  .admin-content {
+    margin-top: 12px;
+    gap: 12px;
+  }
+
+  .admin-card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .admin-card-header {
+    padding: 13px 15px;
+  }
+
+  .admin-project-row,
+  .admin-skill-row {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .admin-project-image {
+    width: 62px;
+    height: 44px;
+  }
+
+  .admin-project-info h3,
+  .admin-skill-info h3 {
+    font-size: 11px;
+  }
+
+  .admin-tech {
+    padding: 3px 7px;
+    font-size: 8px;
+  }
+
+  .admin-action {
+    width: 29px;
+    height: 29px;
+    font-size: 10px;
+  }
+
+  .admin-skill-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 800px) {

@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../Firebase/firebase.js";
+import { uploadImage } from "../cloudinary/cloudinary.js";
 
 const AddSkillModal = ({ isAddSkillModalOpen, setIsAddSkillModalOpen }) => {
-  let closeModal = () => setIsAddSkillModalOpen(false);
+  const fileInput = useRef();
+  const [skillName, setSkillName] = useState("");
+  const [skillImage, setSkillImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const closeModal = () => {
+    setSkillName("");
+    fileInput.current.value = "";
+    setIsAddSkillModalOpen(false);
+  };
+
+  const addskill = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    let imageUrl = await uploadImage(skillImage)
+
+    await addDoc(collection(db, "skills"), {
+      name: skillName,
+      image: imageUrl
+    });
+
+    setLoading(false);
+    closeModal()
+  };
 
   return (
-    <div className={`add-skill-modal-container ${isAddSkillModalOpen ? "active" : ""}`}>
+    <div
+      className={`add-skill-modal-container ${isAddSkillModalOpen ? "active" : ""}`}
+    >
       <div className="add-skill-modal">
         <div className="add-skill-modal-header">
           <div>
@@ -20,20 +49,30 @@ const AddSkillModal = ({ isAddSkillModalOpen, setIsAddSkillModalOpen }) => {
             </div>
           </div>
 
-          <button onClick={closeModal} className="add-skill-modal-close">
+          <button
+            disabled={loading ? true : false}
+            onClick={closeModal}
+            className="add-skill-modal-close"
+          >
             <i className="ph ph-x"></i>
           </button>
         </div>
 
         <div className="add-skill-modal-line"></div>
 
-        <form className="add-skill-form">
+        <form className="add-skill-form" onSubmit={addskill}>
           <div className="add-skill-input-group">
             <label>Skill Name</label>
 
             <div className="add-skill-input-wrapper">
               <i className="ph ph-text-aa"></i>
-              <input type="text" placeholder="e.g. HTML, React, Node.js" />
+              <input
+                onChange={(e) => setSkillName(e.target.value)}
+                value={skillName}
+                type="text"
+                placeholder="e.g. HTML, React, Node.js"
+                required
+              />
             </div>
           </div>
 
@@ -42,18 +81,37 @@ const AddSkillModal = ({ isAddSkillModalOpen, setIsAddSkillModalOpen }) => {
 
             <div className="add-skill-input-wrapper">
               <i className="ph ph-image"></i>
-              <input type="text" placeholder="Enter image path or URL" />
+              <input
+                onChange={(e) => setSkillImage(e.target.files[0])}
+                ref={fileInput}
+                type="file"
+                accept="image/*"
+                required
+              />
             </div>
           </div>
 
           <div className="add-skill-modal-footer">
-            <button onClick={closeModal} type="button" className="add-skill-cancel-btn">
+            <button
+              disabled={loading ? true : false}
+              onClick={closeModal}
+              type="button"
+              className="add-skill-cancel-btn"
+            >
               Cancel
             </button>
 
-            <button type="button" className="add-skill-save-btn">
-              <i className="ph ph-plus"></i>
-              Add Skill
+            <button
+              type="submit"
+              disabled={loading ? true : false}
+              className="add-skill-save-btn"
+            >
+              {loading ? (
+                <span className="loader"></span>
+              ) : (
+                <i className="ph ph-plus"></i>
+              )}
+              {loading ? "Adding Skill" : "Add Skill"}
             </button>
           </div>
         </form>

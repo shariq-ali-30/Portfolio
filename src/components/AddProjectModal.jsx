@@ -1,10 +1,15 @@
 import React from "react";
 
-const AddProjectModal = ({isAddProjectModalOpen,setIsAddProjectModalOpen}) => {
-    let closeModal = () => setIsAddProjectModalOpen(false)
+const AddProjectModal = ({
+  isAddProjectModalOpen,
+  setIsAddProjectModalOpen,
+}) => {
+  let closeModal = () => setIsAddProjectModalOpen(false);
 
   return (
-    <div className={`add-project-modal-container ${isAddProjectModalOpen ? "active" : ""}`}>
+    <div
+      className={`add-project-modal-container ${isAddProjectModalOpen ? "active" : ""}`}
+    >
       <div className="add-project-modal">
         <div className="add-project-modal-header">
           <div>
@@ -55,7 +60,7 @@ const AddProjectModal = ({isAddProjectModalOpen,setIsAddProjectModalOpen}) => {
 
             <div className="add-project-input-wrapper">
               <i className="ph ph-image"></i>
-              <input type="text" placeholder="Enter image path or URL" />
+              <input type="file" accept="image/*" />
             </div>
           </div>
 
@@ -128,7 +133,11 @@ const AddProjectModal = ({isAddProjectModalOpen,setIsAddProjectModalOpen}) => {
           </div>
 
           <div className="add-project-modal-footer">
-            <button onClick={closeModal} type="button" className="add-project-cancel-btn">
+            <button
+              onClick={closeModal}
+              type="button"
+              className="add-project-cancel-btn"
+            >
               Cancel
             </button>
 

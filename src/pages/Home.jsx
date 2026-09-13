@@ -15,10 +15,6 @@ const Home = () => {
 
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [skills, setSkills] = useState([]);
-  const [projects, setProjects] = useState([]);
-
-  skills.reverse();
 
   function activeLinkOnScroll() {
     if (
@@ -69,26 +65,8 @@ const Home = () => {
     }
   }
 
-  async function getSkills() {
-    const querySnapshot = await getDocs(collection(db, "skills"));
-    let skillsList = querySnapshot.docs.map((doc) => {
-      return { id: doc.id, ...doc.data() };
-    });
-    setSkills(skillsList);
-  }
-
-  async function getProjects() {
-    const querySnapshot = await getDocs(collection(db, "skills"));
-    let projectsList = querySnapshot.docs.map((doc) => {
-      return { id: doc.id, ...doc.data() };
-    });
-    setProjects(projectsList);
-  }
-
   useEffect(() => {
     activeLinkOnScroll();
-    getSkills();
-    getProjects();
 
     window.addEventListener("scroll", activeLinkOnScroll);
 

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../Firebase/firebase.js";
 import { uploadImage } from "../cloudinary/cloudinary.js";
 
@@ -23,7 +23,8 @@ const AddSkillModal = ({ isAddSkillModalOpen, setIsAddSkillModalOpen }) => {
 
     await addDoc(collection(db, "skills"), {
       name: skillName,
-      image: imageUrl
+      image: imageUrl,
+      createdAt: serverTimestamp()
     });
 
     setLoading(false);

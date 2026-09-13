@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { db } from "../Firebase/firebase.js";
 import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../context/DataContext.jsx";
 
 const Home = () => {
   const homeSection = useRef();
@@ -12,9 +13,11 @@ const Home = () => {
   const mobileMenuLinks = useRef();
 
   const navigate = useNavigate();
-
+  
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  
+  const [skills, projects] = useContext(DataContext)
 
   function activeLinkOnScroll() {
     if (

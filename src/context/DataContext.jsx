@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { db } from "../Firebase/firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
 export const DataContext = createContext();
 
@@ -9,7 +9,11 @@ export const DataProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
 
   function getSkills() {
-    return onSnapshot(collection(db, "skills"), (querySnapshot) => {
+    const skillsQuery = query(
+      collection(db, "skills"),
+      orderBy("createdAt", "asc"),
+    );
+    return onSnapshot(skillsQuery, (querySnapshot) => {
       const skillsList = querySnapshot.docs.map((doc) => {
         return {
           id: doc.id,

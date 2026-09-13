@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Login from "../components/Login";
 import AddProjectModal from "../components/AddProjectModal";
 import AddSkillModal from "../components/AddSkillModal";
+import { DataContext } from "../context/DataContext";
+import { db } from "../Firebase/firebase";
+import { deleteDoc, doc } from "firebase/firestore";
 
 const Admin = () => {
   const [user, setUser] = useState(true);
   const [isAddProjectModalOpen, setIsAddProjectModalOpen] = useState(false);
   const [isAddSkillModalOpen, setIsAddSkillModalOpen] = useState(false);
+  const [skills, projects] = useContext(DataContext);
+
+  const deleteSkill = async (id) => {
+    await deleteDoc(doc(db, "skills", id));
+  };
 
   return (
     <>
@@ -43,7 +51,7 @@ const Admin = () => {
 
                 <div className="admin-project-row">
                   <div className="admin-project-image">
-                    <img  />
+                    <img />
                   </div>
 
                   <div className="admin-project-info">
@@ -68,7 +76,7 @@ const Admin = () => {
                 </div>
                 <div className="admin-project-row">
                   <div className="admin-project-image">
-                    <img  />
+                    <img />
                   </div>
 
                   <div className="admin-project-info">
@@ -93,7 +101,7 @@ const Admin = () => {
                 </div>
                 <div className="admin-project-row">
                   <div className="admin-project-image">
-                    <img  />
+                    <img />
                   </div>
 
                   <div className="admin-project-info">
@@ -118,7 +126,7 @@ const Admin = () => {
                 </div>
                 <div className="admin-project-row">
                   <div className="admin-project-image">
-                    <img  />
+                    <img />
                   </div>
 
                   <div className="admin-project-info">
@@ -157,7 +165,10 @@ const Admin = () => {
                     </div>
                   </div>
 
-                  <button onClick={() => setIsAddSkillModalOpen(true)} className="admin-add-btn">
+                  <button
+                    onClick={() => setIsAddSkillModalOpen(true)}
+                    className="admin-add-btn"
+                  >
                     <i className="fa-solid fa-plus"></i>
                     Add Skill
                   </button>
@@ -165,35 +176,37 @@ const Admin = () => {
 
                 <div className="admin-line"></div>
 
-                {<div className="admin-skill-row">
-                  <div className="admin-skill-info">
-                    <img
-                      
-                      height={30}
-                    />
+                {skills?.map((skill, idx) => (
+                  <div className="admin-skill-row" key={idx}>
+                    <div className="admin-skill-info">
+                      <img src={skill.image} height={30} />
 
-                    <h3>HTML</h3>
+                      <h3>{skill.name}</h3>
+                    </div>
+
+                    <div className="admin-actions">
+                      <button className="admin-action edit">
+                        <i className="ph ph-pencil-simple"></i>
+                      </button>
+
+                      <button
+                        className="admin-action delete"
+                        onClick={() => deleteSkill(skill.id)}
+                      >
+                        <i className="ph ph-trash"></i>
+                      </button>
+                    </div>
                   </div>
-
-                  <div className="admin-actions">
-                    <button className="admin-action edit">
-                      <i className="ph ph-pencil-simple"></i>
-                    </button>
-
-                    <button className="admin-action delete">
-                      <i className="ph ph-trash"></i>
-                    </button>
-                  </div>
-                </div>}
+                ))}
               </section>
             </div>
           </div>
           <AddProjectModal
-          isAddProjectModalOpen={isAddProjectModalOpen}
+            isAddProjectModalOpen={isAddProjectModalOpen}
             setIsAddProjectModalOpen={setIsAddProjectModalOpen}
           />
           <AddSkillModal
-          isAddSkillModalOpen={isAddSkillModalOpen}
+            isAddSkillModalOpen={isAddSkillModalOpen}
             setIsAddSkillModalOpen={setIsAddSkillModalOpen}
           />
         </main>

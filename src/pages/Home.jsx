@@ -13,11 +13,13 @@ const Home = () => {
   const mobileMenuLinks = useRef();
 
   const navigate = useNavigate();
-  
+
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  
-  const [skills, projects] = useContext(DataContext)
+
+  const [skills, projects] = useContext(DataContext);
+
+  const featuredProjects = projects?.filter((project) => project.featured);
 
   function activeLinkOnScroll() {
     if (
@@ -232,31 +234,39 @@ const Home = () => {
           </div>
         </div>
         <div className="project-cards" id="featured-projects-parent">
-          {/* <div className="project-card">
-                    <div className="project-card-image">
-                        <img src="images/Screenshot 2026-07-05 144404.png" />
-                    </div>
-                    <div className="project-card-info">
-                        <h2 className="project-title">Task Flow</h2>
-                        <p className="project-description">A task management app to organize your work and boost #9A
-                            A4B2#9AA4 B2#9AA4B2 #9AA4B2#9A A4B2# 9AA4B2#9AA4B2
-                            productivity.</p>
-                        <div className="tech-badges">
-                            <span className="html">HTML</span>
-                            <span className="css">CSS</span>
-                            <span className="javascript">JavaScript</span>
-                            <span className="bootstrap">Bootstrap</span>
-                        </div>
-                        <div className="project-card-footer">
-                            <div className="hr-x"></div>
-                            <div className="links">
-                                <a href=""><i className="fa-brands fa-github"></i> GitHub</a>
-                                <div className="hr-y"></div>
-                                <a href=""><i className="fa-solid fa-globe"></i> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
+          {featuredProjects?.map((project, idx) => (
+            <div key={idx} className="project-card">
+              <div className="project-card-image">
+                <img src={project.image} />
+              </div>
+              <div className="project-card-info">
+                <h2 className="project-title">{project.name}</h2>
+                <p className="project-description">{project.description}</p>
+                <div className="tech-badges">
+                  {project.technologies.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className={tech.toLowerCase().replace(" ", "-")}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="project-card-footer">
+                  <div className="hr-x"></div>
+                  <div className="links">
+                    <a href={project.githubLink}>
+                      <i className="fa-brands fa-github"></i> GitHub
+                    </a>
+                    <div className="hr-y"></div>
+                    <a href={project.liveLink}>
+                      <i className="fa-solid fa-globe"></i> Live Demo
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -275,7 +285,41 @@ const Home = () => {
           </nav>
 
           <section className="all-projects-section">
-            <div className="project-cards" id="all-projects-parent"></div>
+            <div className="project-cards" id="all-projects-parent">
+              {projects?.map((project, idx) => (
+                <div key={idx} className="project-card">
+                  <div className="project-card-image">
+                    <img src={project.image} />
+                  </div>
+                  <div className="project-card-info">
+                    <h2 className="project-title">{project.name}</h2>
+                    <p className="project-description">{project.description}</p>
+                    <div className="tech-badges">
+                      {project.technologies.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className={tech.toLowerCase().replace(" ", "-")}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-card-footer">
+                      <div className="hr-x"></div>
+                      <div className="links">
+                        <a href={project.githubLink}>
+                          <i className="fa-brands fa-github"></i> GitHub
+                        </a>
+                        <div className="hr-y"></div>
+                        <a href={project.liveLink}>
+                          <i className="fa-solid fa-globe"></i> Live Demo
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
         </div>
       </div>

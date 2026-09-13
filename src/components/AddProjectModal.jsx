@@ -1,10 +1,88 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { uploadImage } from "../cloudinary/cloudinary";
+import { db } from "../Firebase/firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const AddProjectModal = ({
   isAddProjectModalOpen,
   setIsAddProjectModalOpen,
 }) => {
-  let closeModal = () => setIsAddProjectModalOpen(false);
+  const [form, setForm] = useState({
+    name: "",
+    description: "",
+    githubLink: "",
+    liveLink: "",
+  });
+
+  const handleChange = (name, value) => {
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const [projectImage, setProjectImage] = useState(null);
+  const [isFeatured, setIsFeatured] = useState(false);
+  const [technologies, setTechnologies] = useState([]);
+  const [technologyInput, setTechnologyInput] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const imageRef = useRef();
+  const technologyRef = useRef();
+
+  const addTechnologies = () => {
+    let tech = technologyInput.trim();
+
+    if (!tech) {
+      return;
+    }
+
+    setTechnologies((prev) => [...prev, tech]);
+    setTechnologyInput("");
+  };
+
+  const removeTechnologies = (techName) => {
+    setTechnologies(
+      technologies.filter(
+        (tech) => tech.toLowerCase().trim() != techName.toLowerCase().trim(),
+      ),
+    );
+  };
+
+  const addProject = async (e) => {
+    e.preventDefault();
+    if (!technologies.length) {
+      return technologyRef.current.focus()
+    }
+    setLoading(true);
+    let imageUrl = await uploadImage(projectImage);
+
+    await addDoc(collection(db, "projects"), {
+      name: form.name.trim(),
+      description: form.description.trim(),
+      image: imageUrl,
+      githubLink: form.githubLink.trim(),
+      liveLink: form.liveLink.trim(),
+      technologies: technologies,
+      featured: isFeatured,
+      createdAt: serverTimestamp(),
+    });
+    setLoading(false);
+    closeModal()
+  };
+
+  const closeModal = () => {
+    setIsAddProjectModalOpen(false);
+    setForm({
+      name: "",
+      description: "",
+      githubLink: "",
+      liveLink: "",
+    });
+    imageRef.current.value = "";
+    setTechnologies([]);
+    setIsFeatured(false);
+  };
 
   return (
     <div
@@ -25,20 +103,32 @@ const AddProjectModal = ({
             </div>
           </div>
 
-          <button onClick={closeModal} className="add-project-modal-close">
+          <button
+            onClick={closeModal}
+            disabled={loading ? true : false}
+            className="add-project-modal-close"
+          >
             <i className="ph ph-x"></i>
           </button>
         </div>
 
         <div className="add-project-modal-line"></div>
 
-        <form className="add-project-form">
+        <form onSubmit={addProject} className="add-project-form">
           <div className="add-project-input-group">
             <label>Project Name</label>
 
             <div className="add-project-input-wrapper">
               <i className="ph ph-text-aa"></i>
-              <input type="text" placeholder="Enter project name" />
+              <input
+                required
+                disabled={loading ? true : false}
+                onChange={(e) => handleChange(e.target.name, e.target.value)}
+                name="name"
+                value={form.name}
+                type="text"
+                placeholder="Enter project name"
+              />
             </div>
           </div>
 
@@ -49,6 +139,11 @@ const AddProjectModal = ({
               <i className="ph ph-align-left"></i>
 
               <textarea
+                required
+                disabled={loading ? true : false}
+                onChange={(e) => handleChange(e.target.name, e.target.value)}
+                name="description"
+                value={form.description}
                 placeholder="Enter project description"
                 rows="4"
               ></textarea>
@@ -60,7 +155,14 @@ const AddProjectModal = ({
 
             <div className="add-project-input-wrapper">
               <i className="ph ph-image"></i>
-              <input type="file" accept="image/*" />
+              <input
+                required
+                disabled={loading ? true : false}
+                ref={imageRef}
+                onChange={(e) => setProjectImage(e.target.files[0])}
+                type="file"
+                accept="image/*"
+              />
             </div>
           </div>
 
@@ -70,7 +172,15 @@ const AddProjectModal = ({
 
               <div className="add-project-input-wrapper">
                 <i className="ph ph-github-logo"></i>
-                <input type="url" placeholder="GitHub repository URL" />
+                <input
+                  required
+                  disabled={loading ? true : false}
+                  onChange={(e) => handleChange(e.target.name, e.target.value)}
+                  name="githubLink"
+                  value={form.githubLink}
+                  type="text"
+                  placeholder="GitHub repository URL"
+                />
               </div>
             </div>
 
@@ -79,7 +189,15 @@ const AddProjectModal = ({
 
               <div className="add-project-input-wrapper">
                 <i className="ph ph-globe"></i>
-                <input type="url" placeholder="Live project URL" />
+                <input
+                  required
+                  disabled={loading ? true : false}
+                  onChange={(e) => handleChange(e.target.name, e.target.value)}
+                  name="liveLink"
+                  value={form.liveLink}
+                  type="text"
+                  placeholder="Live project URL"
+                />
               </div>
             </div>
           </div>
@@ -91,35 +209,48 @@ const AddProjectModal = ({
               <div className="add-project-input-wrapper">
                 <i className="ph ph-code"></i>
 
-                <input type="text" placeholder="Add technology" />
+                <input
+                  ref={technologyRef}
+                  disabled={loading ? true : false}
+                  onChange={(e) => setTechnologyInput(e.target.value)}
+                  value={technologyInput}
+                  type="text"
+                  placeholder="Add technology"
+                />
 
-                <button type="button" className="add-tech-btn">
+                <button
+                  onClick={addTechnologies}
+                  type="button"
+                  className="add-tech-btn"
+                >
                   <i className="ph ph-plus"></i>
                 </button>
               </div>
 
               <div className="selected-technologies">
-                <span className="admin-tech html">
-                  HTML
-                  <i className="ph ph-x"></i>
-                </span>
-
-                <span className="admin-tech css">
-                  CSS
-                  <i className="ph ph-x"></i>
-                </span>
-
-                <span className="admin-tech javascript">
-                  JavaScript
-                  <i className="ph ph-x"></i>
-                </span>
+                {technologies.map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className={`admin-tech ${tech.toLowerCase().replace(" ", "-")}`}
+                  >
+                    {tech}
+                    <i
+                      onClick={() => removeTechnologies(tech)}
+                      className="ph ph-x"
+                    ></i>
+                  </span>
+                ))}
               </div>
             </div>
           </div>
 
           <div className="add-project-featured">
             <label className="featured-checkbox">
-              <input type="checkbox" />
+              <input
+                disabled={loading ? true : false}
+                onChange={() => setIsFeatured(!isFeatured)}
+                type="checkbox"
+              />
 
               <span className="custom-checkbox">
                 <i className="ph ph-check"></i>
@@ -134,6 +265,7 @@ const AddProjectModal = ({
 
           <div className="add-project-modal-footer">
             <button
+              disabled={loading ? true : false}
               onClick={closeModal}
               type="button"
               className="add-project-cancel-btn"
@@ -141,9 +273,17 @@ const AddProjectModal = ({
               Cancel
             </button>
 
-            <button type="submit" className="add-project-save-btn">
-              <i className="ph ph-plus"></i>
-              Add Project
+            <button
+              disabled={loading ? true : false}
+              type="submit"
+              className="add-project-save-btn"
+            >
+              {loading ? (
+                <span className="loader"></span>
+              ) : (
+                <i className="ph ph-plus"></i>
+              )}
+              {loading ? "Adding Project" : "Add Project"}
             </button>
           </div>
         </form>

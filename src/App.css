@@ -1058,7 +1058,7 @@ section {
 .admin-page {
     min-height: 100vh;
     width: 100%;
-    padding: clamp(15px, 3vw, 25px) clamp(12px, 2vw, 20px) clamp(24px, 5vw, 40px);
+    padding: clamp(18px, 3vw, 25px) clamp(14px, 2.5vw, 20px) clamp(28px, 5vw, 40px);
     background-color: var(--body-bg);
 }
 
@@ -1069,8 +1069,8 @@ section {
 
 .admin-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 45vw, 100%), 1fr));
-    gap: clamp(12px, 2vw, 18px);
+    grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 42vw, 700px), 1fr));
+    gap: clamp(14px, 2vw, 18px);
     align-items: start;
 }
 
@@ -1081,27 +1081,28 @@ section {
     overflow: hidden;
     background-color: var(--section-bg);
     border: var(--section-border);
-    border-radius: clamp(6px, 1.5vw, 10px);
+    border-radius: clamp(8px, 1.5vw, 10px);
 }
 
 .admin-card-header {
-    min-height: clamp(60px, 8vw, 75px);
-    padding: clamp(10px, 1.5vw, 14px) clamp(12px, 2vw, 16px);
+    min-height: clamp(62px, 8vw, 75px);
+    padding: clamp(12px, 1.5vw, 14px) clamp(14px, 2vw, 16px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: clamp(8px, 1.5vw, 12px);
+    gap: clamp(10px, 1.5vw, 12px);
 }
 
 .admin-heading {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 1.5vw, 11px);
+    gap: clamp(9px, 1.5vw, 11px);
+    min-width: 0;
 }
 
 .admin-heading-icon {
-    width: clamp(28px, 4vw, 37px);
-    height: clamp(28px, 4vw, 37px);
+    width: clamp(32px, 4vw, 37px);
+    height: clamp(32px, 4vw, 37px);
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -1109,53 +1110,54 @@ section {
     color: var(--primary-blue);
     background-color: rgba(45, 140, 255, 0.08);
     border: 1px solid rgba(45, 140, 255, 0.3);
-    border-radius: clamp(5px, 1vw, 7px);
-    font-size: clamp(16px, 2.5vw, 20px);
+    border-radius: clamp(6px, 1vw, 7px);
+    font-size: clamp(17px, 2.5vw, 20px);
 }
 
 .admin-heading h2 {
-    font-size: clamp(16px, 2.5vw, 20px);
+    font-size: clamp(17px, 2.5vw, 20px);
     font-weight: 500;
     line-height: 1;
 }
 
 .admin-heading h2 span {
-    font-size: clamp(10px, 1.5vw, 12px);
+    font-size: clamp(11px, 1.5vw, 12px);
     color: var(--nav-links-text);
     font-weight: 400;
 }
 
 .admin-add-btn {
-    height: clamp(28px, 4vw, 34px);
-    padding: 0 clamp(8px, 1.5vw, 12px);
+    min-width: 84px;
+    height: clamp(32px, 4vw, 34px);
+    padding: 0 clamp(10px, 1.5vw, 12px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(4px, 1vw, 6px);
+    gap: clamp(5px, 1vw, 6px);
     border: 1px solid var(--view-project-btn-bg);
-    border-radius: clamp(4px, 1vw, 5px);
+    border-radius: clamp(5px, 1vw, 5px);
     background-color: var(--view-project-btn-bg);
     color: var(--primary-text);
     font-family: inherit;
-    font-size: clamp(10px, 1.5vw, 12px);
+    font-size: clamp(11px, 1.5vw, 12px);
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .admin-line {
-    width: calc(100% - clamp(20px, 4vw, 32px));
+    width: calc(100% - clamp(24px, 4vw, 32px));
     margin: 0 auto;
     border-bottom: var(--section-border);
 }
 
 .admin-project-row {
-    min-height: clamp(70px, 8vw, 84px);
-    margin: 0 clamp(10px, 2vw, 16px);
-    padding: clamp(8px, 1.5vw, 11px) 0;
+    min-height: clamp(76px, 8vw, 84px);
+    margin: 0 clamp(12px, 2vw, 16px);
+    padding: clamp(10px, 1.5vw, 11px) 0;
     display: flex;
     align-items: center;
-    gap: clamp(8px, 1.5vw, 11px);
+    gap: clamp(10px, 1.5vw, 11px);
     border-bottom: 1px solid #142036;
 }
 
@@ -1164,13 +1166,13 @@ section {
 }
 
 .admin-project-image {
-    width: clamp(50px, 8vw, 72px);
-    height: clamp(40px, 6vw, 50px);
+    width: clamp(58px, 8vw, 72px);
+    height: clamp(44px, 6vw, 50px);
     flex-shrink: 0;
     overflow: hidden;
     background-color: var(--project-card-image-bg);
     border: 1px solid #1a273a;
-    border-radius: clamp(4px, 1vw, 6px);
+    border-radius: clamp(5px, 1vw, 6px);
 }
 
 .admin-project-image img {
@@ -1189,22 +1191,22 @@ section {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: clamp(14px, 2vw, 16px);
-    line-height: 1.2;
+    font-size: clamp(15px, 2vw, 16px);
+    line-height: 1.25;
     font-weight: 500;
 }
 
 .admin-techs {
-    margin-top: clamp(5px, 1vw, 8px);
+    margin-top: clamp(6px, 1vw, 8px);
     display: flex;
     flex-wrap: wrap;
-    gap: clamp(3px, 1vw, 5px);
+    gap: clamp(4px, 1vw, 5px);
 }
 
 .admin-tech {
-    padding: clamp(4px, 1vw, 6px) clamp(6px, 1.5vw, 8px);
-    border-radius: clamp(3px, 1vw, 5px);
-    font-size: clamp(9px, 1.2vw, 11px);
+    padding: clamp(5px, 1vw, 6px) clamp(7px, 1.5vw, 8px);
+    border-radius: clamp(4px, 1vw, 5px);
+    font-size: clamp(10px, 1.2vw, 11px);
     line-height: 1;
 }
 
@@ -1238,23 +1240,28 @@ section {
     color: var(--text-badge-text-tailwind);
 }
 
+.admin-tech.api {
+    background-color: var(--text-badge-bg-api);
+    color: var(--text-badge-text-api);
+}
+
 .admin-actions {
     display: flex;
     align-items: center;
-    gap: clamp(4px, 1vw, 6px);
+    gap: clamp(6px, 1vw, 6px);
     flex-shrink: 0;
 }
 
 .admin-action {
-    width: clamp(26px, 4vw, 32px);
-    height: clamp(26px, 4vw, 32px);
+    width: clamp(30px, 4vw, 32px);
+    height: clamp(30px, 4vw, 32px);
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
-    border-radius: clamp(3px, 1vw, 5px);
+    border-radius: clamp(4px, 1vw, 5px);
     color: var(--primary-text);
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(15px, 2vw, 18px);
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -1272,13 +1279,13 @@ section {
 }
 
 .admin-skill-row {
-    min-height: clamp(56px, 6vw, 69px);
-    margin: 0 clamp(10px, 2vw, 16px);
-    padding: clamp(6px, 1vw, 9px) 0;
+    min-height: clamp(60px, 6vw, 69px);
+    margin: 0 clamp(12px, 2vw, 16px);
+    padding: clamp(8px, 1vw, 9px) 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: clamp(8px, 1.5vw, 12px);
+    gap: clamp(10px, 1.5vw, 12px);
     border-bottom: 1px solid #142036;
 }
 
@@ -1290,18 +1297,16 @@ section {
     min-width: 0;
     display: flex;
     align-items: center;
-    gap: clamp(8px, 1.5vw, 12px);
+    gap: clamp(10px, 1.5vw, 12px);
 }
 
 .admin-skill-info h3 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: clamp(14px, 2vw, 16px);
+    font-size: clamp(15px, 2vw, 16px);
     font-weight: 500;
 }
-
-/* Add Project Modal */
 
 .add-project-modal-container {
     position: fixed;
@@ -1310,21 +1315,17 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-
+    padding: clamp(12px, 4vw, 20px);
     background-color: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(5px);
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-
     transition:
         opacity 0.25s ease,
         visibility 0.25s ease;
 }
 
-/* Add .active class with JS */
 .add-project-modal-container.active {
     opacity: 1;
     visibility: visible;
@@ -1335,16 +1336,12 @@ section {
     width: min(700px, 100%);
     max-height: 90vh;
     overflow-y: auto;
-
     background-color: var(--section-bg);
     border: var(--section-border);
-    border-radius: 12px;
-
+    border-radius: clamp(10px, 2vw, 12px);
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
-
     transform: translateY(20px) scale(0.98);
     transition: transform 0.25s ease;
-
     scrollbar-width: thin;
     scrollbar-color: #243248 transparent;
 }
@@ -1353,45 +1350,38 @@ section {
     transform: translateY(0) scale(1);
 }
 
-
-/* Modal Header */
-
 .add-project-modal-header {
-    min-height: 76px;
-    padding: 14px 18px;
-
+    min-height: clamp(68px, 8vw, 76px);
+    padding: clamp(12px, 2vw, 14px) clamp(14px, 2.5vw, 18px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: clamp(12px, 2vw, 15px);
 }
 
 .add-project-modal-title {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: clamp(10px, 2vw, 12px);
+    min-width: 0;
 }
 
 .add-project-modal-icon {
-    width: 40px;
-    height: 40px;
-
+    width: clamp(38px, 5vw, 40px);
+    height: clamp(38px, 5vw, 40px);
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     color: var(--primary-blue);
     background-color: rgba(45, 140, 255, 0.08);
     border: 1px solid rgba(45, 140, 255, 0.3);
-    border-radius: 7px;
-
-    font-size: 20px;
+    border-radius: clamp(6px, 1vw, 7px);
+    font-size: clamp(18px, 2.5vw, 20px);
 }
 
 .add-project-modal-title h2 {
-    font-size: 19px;
+    font-size: clamp(18px, 2.5vw, 19px);
     font-weight: 500;
     line-height: 1.2;
 }
@@ -1399,28 +1389,22 @@ section {
 .add-project-modal-title p {
     margin-top: 4px;
     color: var(--nav-links-text);
-    font-size: 11px;
+    font-size: clamp(11px, 1.5vw, 11px);
 }
 
 .add-project-modal-close {
-    width: 34px;
-    height: 34px;
-
+    width: clamp(32px, 4vw, 34px);
+    height: clamp(32px, 4vw, 34px);
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border: var(--navbar-border);
-    border-radius: 6px;
-
+    border-radius: clamp(5px, 1vw, 6px);
     background-color: transparent;
     color: var(--nav-links-text);
-
-    font-size: 18px;
+    font-size: clamp(17px, 2vw, 18px);
     cursor: pointer;
-
     transition:
         color 0.2s ease,
         background-color 0.2s ease,
@@ -1434,45 +1418,37 @@ section {
 }
 
 .add-project-modal-line {
-    width: calc(100% - 36px);
+    width: calc(100% - clamp(28px, 4vw, 36px));
     margin: 0 auto;
     border-bottom: var(--section-border);
 }
 
-
-/* Form */
-
 .add-project-form {
-    padding: 20px 18px 18px;
+    padding: clamp(18px, 3vw, 20px) clamp(14px, 2.5vw, 18px) clamp(16px, 2.5vw, 18px);
 }
 
 .add-project-input-group {
-    margin-bottom: 17px;
+    margin-bottom: clamp(16px, 2vw, 17px);
 }
 
 .add-project-input-group>label {
     display: block;
-    margin-bottom: 7px;
-
+    margin-bottom: clamp(6px, 1vw, 7px);
     color: var(--primary-text);
-    font-size: 12px;
+    font-size: clamp(12px, 1.5vw, 12px);
     font-weight: 400;
 }
 
 .add-project-input-wrapper {
     width: 100%;
-    min-height: 43px;
-
+    min-height: clamp(44px, 6vw, 43px);
     display: flex;
     align-items: center;
-    gap: 10px;
-
-    padding: 0 13px;
-
+    gap: clamp(8px, 1.5vw, 10px);
+    padding: 0 clamp(11px, 2vw, 13px);
     background-color: var(--navbar-bg);
     border: var(--navbar-border);
-    border-radius: 6px;
-
+    border-radius: clamp(6px, 1vw, 6px);
     transition:
         border-color 0.2s ease,
         background-color 0.2s ease;
@@ -1486,33 +1462,29 @@ section {
 .add-project-input-wrapper>i {
     width: 17px;
     flex-shrink: 0;
-
     color: var(--nav-links-text);
-    font-size: 16px;
+    font-size: clamp(15px, 2vw, 16px);
     text-align: center;
 }
 
 .add-project-input-wrapper input,
 .add-project-input-wrapper textarea {
     width: 100%;
-
     border: none;
     outline: none;
-
     background-color: transparent;
     color: var(--primary-text);
-
     font-family: inherit;
-    font-size: 12px;
+    font-size: clamp(12px, 1.5vw, 12px);
 }
 
 .add-project-input-wrapper input {
-    height: 42px;
+    height: clamp(42px, 5vw, 42px);
 }
 
 .add-project-input-wrapper textarea {
-    min-height: 95px;
-    padding: 12px 0;
+    min-height: clamp(100px, 12vw, 95px);
+    padding: clamp(11px, 2vw, 12px) 0;
     resize: none;
     line-height: 1.5;
 }
@@ -1522,23 +1494,19 @@ section {
     color: #657184;
 }
 
-/* Textarea */
-
 .textarea-wrapper {
     align-items: flex-start;
     padding-top: 1px;
 }
 
 .textarea-wrapper>i {
-    margin-top: 13px;
+    margin-top: clamp(12px, 2vw, 13px);
 }
-
-/* Two Column Inputs */
 
 .add-project-input-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: clamp(12px, 2vw, 14px);
 }
 
 .add-project-input-row .add-project-input-group {
@@ -1555,11 +1523,11 @@ section {
     color: var(--primary-text);
     border: 1px solid var(--primary-blue);
     border-radius: 5px;
-    padding: 4px 12px;
-    margin-right: 12px;
+    padding: clamp(5px, 1vw, 4px) clamp(10px, 2vw, 12px);
+    margin-right: clamp(10px, 2vw, 12px);
     cursor: pointer;
     font-family: inherit;
-    font-size: 11px;
+    font-size: clamp(11px, 1.5vw, 11px);
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -1568,33 +1536,25 @@ section {
     color: #F8FAFC;
 }
 
-/* Technologies */
-
 .add-project-tech-input {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: clamp(8px, 1.5vw, 9px);
 }
 
 .add-tech-btn {
-    width: 28px;
-    height: 28px;
-
+    width: clamp(30px, 4vw, 28px);
+    height: clamp(30px, 4vw, 28px);
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border: 1px solid rgba(45, 140, 255, 0.3);
     border-radius: 5px;
-
     background-color: rgba(45, 140, 255, 0.08);
     color: var(--primary-blue);
-
     cursor: pointer;
-    font-size: 15px;
-
+    font-size: clamp(15px, 2vw, 15px);
     transition:
         background-color 0.2s ease,
         color 0.2s ease;
@@ -1608,22 +1568,20 @@ section {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: clamp(6px, 1vw, 6px);
 }
 
 .selected-technologies .admin-tech {
     display: flex;
     align-items: center;
-    gap: 6px;
-
-    padding: 5px 8px;
+    gap: clamp(5px, 1vw, 6px);
+    padding: clamp(5px, 1vw, 5px) clamp(7px, 1.5vw, 8px);
     border-radius: 5px;
-
-    font-size: 10px;
+    font-size: clamp(10px, 1.2vw, 10px);
 }
 
 .selected-technologies .admin-tech i {
-    font-size: 11px;
+    font-size: clamp(11px, 1.5vw, 11px);
     cursor: pointer;
     opacity: 0.7;
 }
@@ -1632,11 +1590,9 @@ section {
     opacity: 1;
 }
 
-/* Featured */
-
 .add-project-featured {
     margin-top: 2px;
-    padding: 12px;
+    padding: clamp(12px, 2vw, 12px);
     background-color: var(--navbar-bg);
     border: var(--navbar-border);
     border-radius: 7px;
@@ -1645,8 +1601,7 @@ section {
 .featured-checkbox {
     display: flex;
     align-items: center;
-    gap: 10px;
-
+    gap: clamp(9px, 1.5vw, 10px);
     cursor: pointer;
 }
 
@@ -1655,21 +1610,16 @@ section {
 }
 
 .custom-checkbox {
-    width: 18px;
-    height: 18px;
-
+    width: clamp(18px, 3vw, 18px);
+    height: clamp(18px, 3vw, 18px);
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border: 1px solid #2A3850;
     border-radius: 4px;
-
     color: white;
-    font-size: 12px;
-
+    font-size: clamp(12px, 1.5vw, 12px);
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease;
@@ -1699,48 +1649,39 @@ section {
 
 .featured-checkbox strong {
     color: var(--primary-text);
-    font-size: 11px;
+    font-size: clamp(11px, 1.5vw, 11px);
     font-weight: 500;
 }
 
 .featured-checkbox small {
     color: var(--nav-links-text);
-    font-size: 9px;
+    font-size: clamp(10px, 1.2vw, 9px);
 }
 
-/* Modal Footer */
-
 .add-project-modal-footer {
-    margin-top: 20px;
-    padding-top: 16px;
-
+    margin-top: clamp(18px, 3vw, 20px);
+    padding-top: clamp(14px, 2vw, 16px);
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 9px;
-
+    gap: clamp(8px, 1.5vw, 9px);
     border-top: var(--section-border);
 }
 
 .add-project-cancel-btn,
 .add-project-save-btn {
-    height: 38px;
-
+    min-width: clamp(92px, 15vw, 110px);
+    height: clamp(40px, 5vw, 38px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
-
-    padding: 0 16px;
-
-    border-radius: 6px;
-
+    gap: clamp(6px, 1vw, 7px);
+    padding: 0 clamp(14px, 2vw, 16px);
+    border-radius: clamp(6px, 1vw, 6px);
     font-family: inherit;
-    font-size: 11px;
+    font-size: clamp(11px, 1.5vw, 11px);
     font-weight: 500;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease,
@@ -1770,10 +1711,8 @@ section {
 }
 
 .add-project-save-btn i {
-    font-size: 14px;
+    font-size: clamp(13px, 2vw, 14px);
 }
-
-/* Add Skill Modal */
 
 .add-skill-modal-container {
     position: fixed;
@@ -1782,15 +1721,12 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-
+    padding: clamp(12px, 4vw, 20px);
     background-color: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(5px);
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-
     transition:
         opacity 0.25s ease,
         visibility 0.25s ease;
@@ -1806,16 +1742,12 @@ section {
     width: min(500px, 100%);
     max-height: 90vh;
     overflow-y: auto;
-
     background-color: var(--section-bg);
     border: var(--section-border);
-    border-radius: 12px;
-
+    border-radius: clamp(10px, 2vw, 12px);
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
-
     transform: translateY(20px) scale(0.98);
     transition: transform 0.25s ease;
-
     scrollbar-width: thin;
     scrollbar-color: #243248 transparent;
 }
@@ -1825,41 +1757,37 @@ section {
 }
 
 .add-skill-modal-header {
-    min-height: 76px;
-    padding: 14px 18px;
-
+    min-height: clamp(68px, 8vw, 76px);
+    padding: clamp(12px, 2vw, 14px) clamp(14px, 2.5vw, 18px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: clamp(12px, 2vw, 15px);
 }
 
 .add-skill-modal-title {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: clamp(10px, 2vw, 12px);
+    min-width: 0;
 }
 
 .add-skill-modal-icon {
-    width: 40px;
-    height: 40px;
-
+    width: clamp(38px, 5vw, 40px);
+    height: clamp(38px, 5vw, 40px);
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     color: var(--primary-blue);
     background-color: rgba(45, 140, 255, 0.08);
     border: 1px solid rgba(45, 140, 255, 0.3);
-    border-radius: 7px;
-
-    font-size: 20px;
+    border-radius: clamp(6px, 1vw, 7px);
+    font-size: clamp(18px, 2.5vw, 20px);
 }
 
 .add-skill-modal-title h2 {
-    font-size: 19px;
+    font-size: clamp(18px, 2.5vw, 19px);
     font-weight: 500;
     line-height: 1.2;
 }
@@ -1867,28 +1795,22 @@ section {
 .add-skill-modal-title p {
     margin-top: 4px;
     color: var(--nav-links-text);
-    font-size: 11px;
+    font-size: clamp(11px, 1.5vw, 11px);
 }
 
 .add-skill-modal-close {
-    width: 34px;
-    height: 34px;
-
+    width: clamp(32px, 4vw, 34px);
+    height: clamp(32px, 4vw, 34px);
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex-shrink: 0;
-
     border: var(--navbar-border);
-    border-radius: 6px;
-
+    border-radius: clamp(5px, 1vw, 6px);
     background-color: transparent;
     color: var(--nav-links-text);
-
-    font-size: 18px;
+    font-size: clamp(17px, 2vw, 18px);
     cursor: pointer;
-
     transition:
         color 0.2s ease,
         background-color 0.2s ease,
@@ -1902,49 +1824,44 @@ section {
 }
 
 .add-skill-modal-line {
-    width: calc(100% - 36px);
+    width: calc(100% - clamp(28px, 4vw, 36px));
     margin: 0 auto;
     border-bottom: var(--section-border);
 }
 
 .add-skill-form {
-    padding: 20px 18px 18px;
+    padding: clamp(18px, 3vw, 20px) clamp(14px, 2.5vw, 18px) clamp(16px, 2.5vw, 18px);
 }
 
 .add-skill-input-group {
-    margin-bottom: 17px;
+    margin-bottom: clamp(16px, 2vw, 17px);
 }
 
 .add-skill-input-group>label {
     display: block;
-    margin-bottom: 7px;
-
+    margin-bottom: clamp(6px, 1vw, 7px);
     color: var(--primary-text);
-    font-size: 12px;
+    font-size: clamp(12px, 1.5vw, 12px);
     font-weight: 400;
 }
 
 .add-skill-input-wrapper {
     width: 100%;
-    min-height: 43px;
-
+    min-height: clamp(44px, 6vw, 43px);
     display: flex;
     align-items: center;
-    gap: 10px;
-
-    padding: 0 13px;
-
+    gap: clamp(8px, 1.5vw, 10px);
+    padding: 0 clamp(11px, 2vw, 13px);
     background-color: var(--navbar-bg);
     border: var(--navbar-border);
-    border-radius: 6px;
-
+    border-radius: clamp(6px, 1vw, 6px);
     transition:
         border-color 0.2s ease,
         background-color 0.2s ease;
 }
 
 .add-skill-input-wrapper p {
-    font-size: 12px;
+    font-size: clamp(12px, 1.5vw, 12px);
 }
 
 .add-skill-input-wrapper:focus-within {
@@ -1955,24 +1872,20 @@ section {
 .add-skill-input-wrapper>i {
     width: 17px;
     flex-shrink: 0;
-
     color: var(--nav-links-text);
-    font-size: 16px;
+    font-size: clamp(15px, 2vw, 16px);
     text-align: center;
 }
 
 .add-skill-input-wrapper input {
     width: 100%;
-    height: 42px;
-
+    height: clamp(42px, 5vw, 42px);
     border: none;
     outline: none;
-
     background-color: transparent;
     color: var(--primary-text);
-
     font-family: inherit;
-    font-size: 12px;
+    font-size: clamp(12px, 1.5vw, 12px);
 }
 
 .add-skill-input-wrapper input::placeholder {
@@ -1989,11 +1902,11 @@ section {
     color: var(--primary-text);
     border: 1px solid var(--primary-blue);
     border-radius: 5px;
-    padding: 4px 12px;
-    margin-right: 12px;
+    padding: clamp(5px, 1vw, 4px) clamp(10px, 2vw, 12px);
+    margin-right: clamp(10px, 2vw, 12px);
     cursor: pointer;
     font-family: inherit;
-    font-size: 11px;
+    font-size: clamp(11px, 1.5vw, 11px);
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -2003,36 +1916,29 @@ section {
 }
 
 .add-skill-modal-footer {
-    margin-top: 20px;
-    padding-top: 16px;
-
+    margin-top: clamp(18px, 3vw, 20px);
+    padding-top: clamp(14px, 2vw, 16px);
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 9px;
-
+    gap: clamp(8px, 1.5vw, 9px);
     border-top: var(--section-border);
 }
 
 .add-skill-cancel-btn,
 .add-skill-save-btn {
-    height: 38px;
-
+    min-width: clamp(92px, 15vw, 110px);
+    height: clamp(40px, 5vw, 38px);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
-
-    padding: 0 16px;
-
-    border-radius: 6px;
-
+    gap: clamp(6px, 1vw, 7px);
+    padding: 0 clamp(14px, 2vw, 16px);
+    border-radius: clamp(6px, 1vw, 6px);
     font-family: inherit;
-    font-size: 11px;
+    font-size: clamp(11px, 1.5vw, 11px);
     font-weight: 500;
-
     cursor: pointer;
-
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease,
@@ -2062,7 +1968,7 @@ section {
 }
 
 .add-skill-save-btn i {
-    font-size: 14px;
+    font-size: clamp(13px, 2vw, 14px);
 }
 
 button:disabled {

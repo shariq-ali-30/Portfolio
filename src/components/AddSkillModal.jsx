@@ -1,35 +1,75 @@
-import React, { useRef, useState } from "react";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../Firebase/firebase.js";
 import { uploadImage } from "../cloudinary/cloudinary.js";
 
-const AddSkillModal = ({ isAddSkillModalOpen, setIsAddSkillModalOpen }) => {
+const AddSkillModal = ({
+  isAddSkillModalOpen,
+  setIsAddSkillModalOpen,
+  editSkill,
+  setEditSkill,
+}) => {
   const fileInput = useRef();
   const [skillName, setSkillName] = useState("");
   const [skillImage, setSkillImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const closeModal = () => {
-    setSkillName("");
-    fileInput.current.value = "";
     setIsAddSkillModalOpen(false);
+    setTimeout(() => {
+      fileInput.current.value = "";
+      setSkillName("");
+      setEditSkill(null);
+    }, 500);
   };
 
   const addskill = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    let imageUrl = await uploadImage(skillImage)
+    if (editSkill) {
+      let docRef = doc(db, "skills", editSkill.id);
+      let imageUrl = editSkill.image;
+
+      if (skillImage) {
+        imageUrl = await uploadImage(skillImage);
+      }
+
+      await updateDoc(docRef, {
+        name: skillName,
+        image: imageUrl,
+      });
+
+      setEditSkill(null);
+      setLoading(false);
+      closeModal();
+
+      return;
+    }
+
+    let imageUrl = await uploadImage(skillImage);
 
     await addDoc(collection(db, "skills"), {
       name: skillName,
       image: imageUrl,
-      createdAt: serverTimestamp()
+      createdAt: serverTimestamp(),
     });
 
     setLoading(false);
-    closeModal()
+    closeModal();
   };
+
+  useEffect(() => {
+    if (editSkill) {
+      setSkillName(editSkill.name);
+    }
+  }, [editSkill]);
 
   return (
     <div
@@ -44,8 +84,12 @@ const AddSkillModal = ({ isAddSkillModalOpen, setIsAddSkillModalOpen }) => {
               </div>
 
               <div>
-                <h2>Add Skill</h2>
-                <p>Add a new skill to your portfolio</p>
+                <h2>{editSkill ? "Edit Skill" : "Add Skill"}</h2>
+                <p>
+                  {editSkill
+                    ? "Update your skill information"
+                    : "Add a new skill to your portfolio"}
+                </p>
               </div>
             </div>
           </div>
@@ -87,7 +131,7 @@ const AddSkillModal = ({ isAddSkillModalOpen, setIsAddSkillModalOpen }) => {
                 ref={fileInput}
                 type="file"
                 accept="image/*"
-                required
+                required={!editSkill}
               />
             </div>
           </div>
@@ -110,9 +154,15 @@ const AddSkillModal = ({ isAddSkillModalOpen, setIsAddSkillModalOpen }) => {
               {loading ? (
                 <span className="loader"></span>
               ) : (
-                <i className="ph ph-plus"></i>
+                <i className={`ph ph-${editSkill ? "check" : "plus"}`}></i>
               )}
-              {loading ? "Adding Skill" : "Add Skill"}
+              {loading
+                ? editSkill
+                  ? "Updating Skill"
+                  : "Adding Skill"
+                : editSkill
+                  ? "Update Skill"
+                  : "Add Skill"}
             </button>
           </div>
         </form>

@@ -1,11 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { uploadImage } from "../cloudinary/cloudinary";
 import { db } from "../Firebase/firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 
 const AddProjectModal = ({
   isAddProjectModalOpen,
   setIsAddProjectModalOpen,
+  editProject,
+  setEditProject,
 }) => {
   const [form, setForm] = useState({
     name: "",
@@ -52,9 +60,35 @@ const AddProjectModal = ({
   const addProject = async (e) => {
     e.preventDefault();
     if (!technologies.length) {
-      return technologyRef.current.focus()
+      return technologyRef.current.focus();
     }
     setLoading(true);
+
+    if (editProject) {
+      let docRef = doc(db, "projects", editProject.id);
+      let imageUrl = editProject.imageUrl;
+
+      if (projectImage) {
+        imageUrl = await uploadImage(projectImage);
+      }
+
+      await updateDoc(docRef, {
+        name: form.name.trim(),
+        description: form.description.trim(),
+        image: imageUrl,
+        githubLink: form.githubLink.trim(),
+        liveLink: form.liveLink.trim(),
+        technologies: technologies,
+        featured: isFeatured,
+      });
+
+      setEditProject(null);
+      setLoading(false);
+      closeModal();
+
+      return;
+    }
+
     let imageUrl = await uploadImage(projectImage);
 
     await addDoc(collection(db, "projects"), {
@@ -68,21 +102,37 @@ const AddProjectModal = ({
       createdAt: serverTimestamp(),
     });
     setLoading(false);
-    closeModal()
+    closeModal();
   };
 
   const closeModal = () => {
     setIsAddProjectModalOpen(false);
-    setForm({
-      name: "",
-      description: "",
-      githubLink: "",
-      liveLink: "",
-    });
-    imageRef.current.value = "";
-    setTechnologies([]);
-    setIsFeatured(false);
+    setTimeout(() => {
+      setForm({
+        name: "",
+        description: "",
+        githubLink: "",
+        liveLink: "",
+      });
+      imageRef.current.value = "";
+      setTechnologies([]);
+      setIsFeatured(false);
+      setEditProject(null);
+    }, 500);
   };
+
+  useEffect(() => {
+    if (editProject) {
+      setForm({
+        name: editProject.name,
+        description: editProject.description,
+        githubLink: editProject.githubLink,
+        liveLink: editProject.liveLink,
+      });
+      setIsFeatured(editProject.featured);
+      setTechnologies(editProject.technologies);
+    }
+  }, [editProject]);
 
   return (
     <div
@@ -97,8 +147,12 @@ const AddProjectModal = ({
               </div>
 
               <div>
-                <h2>Add Project</h2>
-                <p>Create a new project for your portfolio</p>
+                <h2>{editProject ? "Edit Project" : "Add Project"}</h2>
+                <p>
+                  {editProject
+                    ? "Update your project information"
+                    : "Create a new project for your portfolio"}
+                </p>
               </div>
             </div>
           </div>
@@ -156,7 +210,7 @@ const AddProjectModal = ({
             <div className="add-project-input-wrapper">
               <i className="ph ph-image"></i>
               <input
-                required
+                required={!editProject}
                 disabled={loading ? true : false}
                 ref={imageRef}
                 onChange={(e) => setProjectImage(e.target.files[0])}
@@ -250,6 +304,7 @@ const AddProjectModal = ({
                 disabled={loading ? true : false}
                 onChange={() => setIsFeatured(!isFeatured)}
                 type="checkbox"
+                checked={isFeatured}
               />
 
               <span className="custom-checkbox">
@@ -281,9 +336,15 @@ const AddProjectModal = ({
               {loading ? (
                 <span className="loader"></span>
               ) : (
-                <i className="ph ph-plus"></i>
+                <i className={`ph ph-${editProject ? "check" : "plus"}`}></i>
               )}
-              {loading ? "Adding Project" : "Add Project"}
+              {loading
+                ? editProject
+                  ? "Updating Project"
+                  : "Adding Project"
+                : editProject
+                  ? "Update Project"
+                  : "Add Project"}
             </button>
           </div>
         </form>

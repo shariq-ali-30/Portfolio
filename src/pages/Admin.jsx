@@ -5,15 +5,22 @@ import AddSkillModal from "../components/AddSkillModal";
 import { DataContext } from "../context/DataContext";
 import { db } from "../Firebase/firebase";
 import { deleteDoc, doc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [isAddProjectModalOpen, setIsAddProjectModalOpen] = useState(false);
   const [isAddSkillModalOpen, setIsAddSkillModalOpen] = useState(false);
   const [skills, projects] = useContext(DataContext);
+  const [editSkill, setEditSkill] = useState(null);
+  const [editProject, setEditProject] = useState(null);
 
   const deleteSkill = async (id) => {
     await deleteDoc(doc(db, "skills", id));
+  };
+
+  const deleteProject = async (id) => {
+    await deleteDoc(doc(db, "projects", id));
   };
 
   return (
@@ -52,7 +59,9 @@ const Admin = () => {
                 {projects?.map((project, idx) => (
                   <div key={idx} className="admin-project-row">
                     <div className="admin-project-image">
-                      <img src={project.image} />
+                      <a target="_blank" href={project.githubLink}>
+                        <img src={project.image} />
+                      </a>
                     </div>
 
                     <div className="admin-project-info">
@@ -60,17 +69,31 @@ const Admin = () => {
 
                       <div className="admin-techs">
                         {project.technologies.map((tech, idx) => (
-                          <span key={idx} className={`admin-tech ${tech.toLowerCase().replace(" ", "-")}`}>{tech}</span>
+                          <span
+                            key={idx}
+                            className={`admin-tech ${tech.toLowerCase().replace(" ", "-")}`}
+                          >
+                            {tech}
+                          </span>
                         ))}
                       </div>
                     </div>
 
                     <div className="admin-actions">
-                      <button className="admin-action edit">
+                      <button
+                        onClick={() => {
+                          setEditProject(project);
+                          setIsAddProjectModalOpen(true);
+                        }}
+                        className="admin-action edit"
+                      >
                         <i className="ph ph-pencil-simple"></i>
                       </button>
 
-                      <button className="admin-action delete">
+                      <button
+                        onClick={() => deleteProject(project.id)}
+                        className="admin-action delete"
+                      >
                         <i className="ph ph-trash"></i>
                       </button>
                     </div>
@@ -112,7 +135,13 @@ const Admin = () => {
                     </div>
 
                     <div className="admin-actions">
-                      <button className="admin-action edit">
+                      <button
+                        onClick={() => {
+                          setEditSkill(skill);
+                          setIsAddSkillModalOpen(true);
+                        }}
+                        className="admin-action edit"
+                      >
                         <i className="ph ph-pencil-simple"></i>
                       </button>
 
@@ -131,10 +160,14 @@ const Admin = () => {
           <AddProjectModal
             isAddProjectModalOpen={isAddProjectModalOpen}
             setIsAddProjectModalOpen={setIsAddProjectModalOpen}
+            editProject={editProject}
+            setEditProject={setEditProject}
           />
           <AddSkillModal
             isAddSkillModalOpen={isAddSkillModalOpen}
             setIsAddSkillModalOpen={setIsAddSkillModalOpen}
+            editSkill={editSkill}
+            setEditSkill={setEditSkill}
           />
         </main>
       )}

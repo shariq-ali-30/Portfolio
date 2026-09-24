@@ -66,7 +66,7 @@ const AddProjectModal = ({
 
     if (editProject) {
       let docRef = doc(db, "projects", editProject.id);
-      let imageUrl = editProject.imageUrl;
+      let imageUrl = editProject.image;
 
       if (projectImage) {
         imageUrl = await uploadImage(projectImage);
@@ -117,6 +117,7 @@ const AddProjectModal = ({
       imageRef.current.value = "";
       setTechnologies([]);
       setIsFeatured(false);
+      setEditProject(null);
       setEditProject(null);
     }, 500);
   };

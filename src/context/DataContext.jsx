@@ -26,7 +26,12 @@ export const DataProvider = ({ children }) => {
   }
 
   function getProjects() {
-    return onSnapshot(collection(db, "projects"), (querySnapshot) => {
+    const projectsQuery = query(
+      collection(db, "projects"),
+      orderBy("createdAt", "desc"),
+    );
+
+    return onSnapshot(projectsQuery, (querySnapshot) => {
       const projectsList = querySnapshot.docs.map((doc) => {
         return {
           id: doc.id,

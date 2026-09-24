@@ -18,6 +18,7 @@
     --text-badge-bg-react: #102A43;
     --text-badge-bg-tailwind: #0F2F35;
     --text-badge-bg-api: #102A43;
+    --text-badge-bg-firebase: #2A1A00;
 
     --primary-text: #F8FAFC;
     --nav-links-text: #A2ACB8;
@@ -29,6 +30,7 @@
     --text-badge-text-react: #61DAFB;
     --text-badge-text-tailwind: #38BDF8;
     --text-badge-text-api: #22C55E;
+    --text-badge-text-firebase: #FFCA28;
 
     --navbar-border: 1.5px solid #172133;
     --section-border: 1.5px solid #152338;
@@ -631,6 +633,11 @@ section {
     color: var(--text-badge-text-api);
 }
 
+.project-cards .project-card .project-card-info .tech-badges span.firebase {
+    background-color: var(--text-badge-bg-firebase);
+    color: var(--text-badge-text-firebase);
+}
+
 .project-cards .project-card .project-card-info .project-card-footer {
     position: absolute;
     display: flex;
@@ -796,8 +803,8 @@ section {
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
+    width: 100%;
+    margin-top: 30px;
     background-color: var(--section-bg);
     border-top: var(--navbar-border);
     padding: 0 30px;
@@ -1166,8 +1173,9 @@ section {
 }
 
 .admin-project-image {
-    width: clamp(58px, 8vw, 72px);
-    height: clamp(44px, 6vw, 50px);
+    width: clamp(80px, 10vw, 100px);
+    aspect-ratio: 16 / 9;
+    height: auto;
     flex-shrink: 0;
     overflow: hidden;
     background-color: var(--project-card-image-bg);
@@ -1243,6 +1251,11 @@ section {
 .admin-tech.api {
     background-color: var(--text-badge-bg-api);
     color: var(--text-badge-text-api);
+}
+
+.admin-tech.firebase {
+    background-color: var(--text-badge-bg-firebase);
+    color: var(--text-badge-text-firebase);
 }
 
 .admin-actions {
@@ -2021,7 +2034,7 @@ button:disabled {
     .hero-section {
         padding-left: 0;
         padding: 0 20px;
-        height: 85vh;
+        height: 88vh;
         margin-top: 0;
     }
 

@@ -39,13 +39,13 @@ const AddProjectModal = ({
   const technologyRef = useRef();
 
   const addTechnologies = () => {
-    let tech = technologyInput.trim();
+    const techArr = technologyInput.trim().split(/\s+/);
 
-    if (!tech) {
+    if (!technologyInput.trim()) {
       return;
     }
 
-    setTechnologies((prev) => [...prev, tech]);
+    setTechnologies((prev) => [...prev, ...techArr]);
     setTechnologyInput("");
   };
 

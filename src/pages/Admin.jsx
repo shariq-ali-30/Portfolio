@@ -8,7 +8,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 
 const Admin = () => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [isAddProjectModalOpen, setIsAddProjectModalOpen] = useState(false);
   const [isAddSkillModalOpen, setIsAddSkillModalOpen] = useState(false);
   const [skills, projects] = useContext(DataContext);

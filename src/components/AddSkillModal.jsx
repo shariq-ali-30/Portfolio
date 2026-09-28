@@ -112,6 +112,7 @@ const AddSkillModal = ({
             <div className="add-skill-input-wrapper">
               <i className="ph ph-text-aa"></i>
               <input
+                autoComplete="off"
                 onChange={(e) => setSkillName(e.target.value)}
                 value={skillName}
                 type="text"

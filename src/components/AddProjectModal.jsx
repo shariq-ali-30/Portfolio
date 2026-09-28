@@ -177,6 +177,7 @@ const AddProjectModal = ({
               <i className="ph ph-text-aa"></i>
               <input
                 required
+                autoComplete="off"
                 disabled={loading ? true : false}
                 onChange={(e) => handleChange(e.target.name, e.target.value)}
                 name="name"
@@ -195,6 +196,7 @@ const AddProjectModal = ({
 
               <textarea
                 required
+                autoComplete="off"
                 disabled={loading ? true : false}
                 onChange={(e) => handleChange(e.target.name, e.target.value)}
                 name="description"
@@ -229,6 +231,7 @@ const AddProjectModal = ({
                 <i className="ph ph-github-logo"></i>
                 <input
                   required
+                  autoComplete="off"
                   disabled={loading ? true : false}
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   name="githubLink"
@@ -246,6 +249,7 @@ const AddProjectModal = ({
                 <i className="ph ph-globe"></i>
                 <input
                   required
+                  autoComplete="off"
                   disabled={loading ? true : false}
                   onChange={(e) => handleChange(e.target.name, e.target.value)}
                   name="liveLink"

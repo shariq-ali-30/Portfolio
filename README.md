@@ -1,16 +1,71 @@
-# React + Vite
+# Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About The Project
 
-Currently, two official plugins are available:
+This project is a Personal Portfolio website built using React.js.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The purpose of this project was to create a modern and responsive portfolio website to showcase my skills and projects while practicing React components, React Router, Context API, Firebase Firestore, dynamic data rendering, and responsive UI development.
 
-## React Compiler
+The portfolio dynamically loads skills and project information from Firebase Firestore, allowing the content to be managed and updated without changing the main portfolio interface.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+- React.js
+- JavaScript (ES6)
+- HTML5
+- CSS3
+- Vite
+- React Router DOM
+- Firebase
+- Firebase Firestore
+- React Context API
+- Font Awesome
+- Phosphor Icons
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- Modern and responsive portfolio design
+- Hero section with personal introduction
+- About Me section
+- Skills section with dynamically loaded skills
+- Featured Projects section
+- View All Projects section
+- Dynamic project cards
+- Project descriptions and technology badges
+- GitHub links for projects
+- Live Demo links for projects
+- Contact section with Email, LinkedIn, and GitHub information
+- Responsive desktop navigation
+- Responsive mobile navigation menu
+- Active navigation link based on scroll position
+- Smooth section-based navigation
+- Scroll-to-top functionality
+- Dynamic project data from Firebase Firestore
+- Dynamic skills data from Firebase Firestore
+- Real-time Firestore data updates
+- Separate Admin route for portfolio management
+- Reusable React components
+- Responsive design for mobile, tablet, and desktop devices
+
+## What I Learned
+
+Through this project, I learned:
+
+- How to build a complete personal portfolio using React
+- How to create reusable React components
+- How to manage shared data using React Context API
+- How to use React Router for page navigation
+- How to connect a React application with Firebase
+- How to work with Firebase Firestore
+- How to fetch and listen to real-time Firestore data
+- How to dynamically render skills and projects from database data
+- How to filter featured projects from the complete project list
+- How to manage mobile navigation using React state
+- How to detect the active section while scrolling
+- How to build responsive layouts using CSS
+- How to organize a React project using pages, components, context, and Firebase
+- How to create a portfolio that can display dynamically managed project and skill data
+
+## Author
+
+**Shariq Ali**

@@ -18,7 +18,7 @@
   --text-badge-bg-react: #102a43;
   --text-badge-bg-tailwind: #0f2f35;
   --text-badge-bg-api: #102a43;
-  --text-badge-bg-firebase: #3D2100;
+  --text-badge-bg-firebase: #3d2100;
 
   --primary-text: #f8fafc;
   --nav-links-text: #a2acb8;
@@ -30,7 +30,7 @@
   --text-badge-text-react: #61dafb;
   --text-badge-text-tailwind: #38bdf8;
   --text-badge-text-api: #22c55e;
-  --text-badge-text-firebase: #FF8A00;
+  --text-badge-text-firebase: #ff8a00;
 
   --navbar-border: 1.5px solid #172133;
   --section-border: 1.5px solid #152338;
@@ -542,10 +542,10 @@ section {
 .project-cards .project-card {
   position: relative;
   width: 450px;
-  height: 480px;
   background-color: var(--project-card-bg);
   border: var(--project-card-border);
   border-radius: 14px;
+  padding-bottom: 55px;
   overflow: hidden;
 }
 
@@ -581,7 +581,6 @@ section {
   font-size: 12px;
   margin-top: 5px;
   color: var(--nav-links-text);
-  max-height: 55px;
   overflow: auto;
   scrollbar-width: none;
 }
@@ -590,6 +589,7 @@ section {
   margin-top: 10px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
 }
 

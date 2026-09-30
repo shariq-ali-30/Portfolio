@@ -285,7 +285,10 @@ const Home = () => {
             </div>
             <div className="right">
               <button
-                onClick={() => setShowAllProjects(true)}
+                onClick={() => {
+                  setShowAllProjects(true)
+                  document.body.style.overflow = "hidden"
+                }}
                 className="all-projects-btn"
               >
                 View All Projects <i className="fa-solid fa-arrow-right"></i>
@@ -336,7 +339,10 @@ const Home = () => {
             <nav className="navbar">
               <div>
                 <i
-                  onClick={() => setShowAllProjects(false)}
+                  onClick={() => {
+                    setShowAllProjects(false)
+                    document.body.style.overflow = "auto"
+                  }}
                   className="fa-solid fa-arrow-left"
                 ></i>
                 <h2>All Projects</h2>

@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
-import Login from "../components/Login";
+import { useContext, useState } from "react";
 import AddProjectModal from "../components/AddProjectModal";
 import AddSkillModal from "../components/AddSkillModal";
+import DeleteConfirmBox from "../components/DeleteConfirmBox";
+import Login from "../components/Login";
 import { DataContext } from "../context/DataContext";
-import { db } from "../Firebase/firebase";
-import { deleteDoc, doc } from "firebase/firestore";
-import { Link } from "react-router-dom";
 
 const Admin = () => {
   const [user, setUser] = useState(false);
@@ -14,14 +12,8 @@ const Admin = () => {
   const [skills, projects] = useContext(DataContext);
   const [editSkill, setEditSkill] = useState(null);
   const [editProject, setEditProject] = useState(null);
-
-  const deleteSkill = async (id) => {
-    await deleteDoc(doc(db, "skills", id));
-  };
-
-  const deleteProject = async (id) => {
-    await deleteDoc(doc(db, "projects", id));
-  };
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const [itemToDelete, setItemToDelete] = useState(null)
 
   return (
     <>
@@ -91,7 +83,14 @@ const Admin = () => {
                       </button>
 
                       <button
-                        onClick={() => deleteProject(project.id)}
+                        onClick={() => {
+                          setIsDeleteModalOpen(true)
+                          setItemToDelete({
+                            deleteType: "Project",
+                            id: project.id,
+                            deleteName: project.name
+                          })
+                        }}
                         className="admin-action delete"
                       >
                         <i className="ph ph-trash"></i>
@@ -146,8 +145,15 @@ const Admin = () => {
                       </button>
 
                       <button
+                        onClick={() => {
+                          setIsDeleteModalOpen(true)
+                          setItemToDelete({
+                            deleteType: "Skill",
+                            id: skill.id,
+                            deleteName: skill.name
+                          })
+                        }}
                         className="admin-action delete"
-                        onClick={() => deleteSkill(skill.id)}
                       >
                         <i className="ph ph-trash"></i>
                       </button>
@@ -168,6 +174,11 @@ const Admin = () => {
             setIsAddSkillModalOpen={setIsAddSkillModalOpen}
             editSkill={editSkill}
             setEditSkill={setEditSkill}
+          />
+          <DeleteConfirmBox
+            isDeleteModalOpen={isDeleteModalOpen}
+            setIsDeleteModalOpen={setIsDeleteModalOpen}
+            itemToDelete={itemToDelete}
           />
         </main>
       )}

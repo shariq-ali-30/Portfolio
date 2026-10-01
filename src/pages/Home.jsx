@@ -1,8 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { db } from "../Firebase/firebase.js";
-import { collection, getDocs } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../context/DataContext.jsx";
+import Resume from "../images/Shariq Ali - Resume.pdf"
 
 const Home = () => {
   const homeSection = useRef();
@@ -252,9 +251,9 @@ const Home = () => {
                 building clean, modern and responsive websites. I enjoy turning
                 ideas into real-world products.
               </p>
-              <button>
-                Know More About Me <i className="fa-solid fa-arrow-right"></i>
-              </button>
+              <a href={Resume} download className="resume-btn">
+                Download My Resume <i className="ph ph-download-simple"></i>
+              </a>
             </div>
 
             <div className="skills">

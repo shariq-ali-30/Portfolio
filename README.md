@@ -47,25 +47,6 @@ The portfolio dynamically loads skills and project information from Firebase Fir
 - Reusable React components
 - Responsive design for mobile, tablet, and desktop devices
 
-## What I Learned
-
-Through this project, I learned:
-
-- How to build a complete personal portfolio using React
-- How to create reusable React components
-- How to manage shared data using React Context API
-- How to use React Router for page navigation
-- How to connect a React application with Firebase
-- How to work with Firebase Firestore
-- How to fetch and listen to real-time Firestore data
-- How to dynamically render skills and projects from database data
-- How to filter featured projects from the complete project list
-- How to manage mobile navigation using React state
-- How to detect the active section while scrolling
-- How to build responsive layouts using CSS
-- How to organize a React project using pages, components, context, and Firebase
-- How to create a portfolio that can display dynamically managed project and skill data
-
 ## Author
 
 **Shariq Ali**

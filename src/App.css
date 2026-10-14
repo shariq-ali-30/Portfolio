@@ -720,6 +720,143 @@ section {
   font-size: 19px;
 }
 
+/* Project card skeleton */
+
+/* Image placeholder */
+.project-skeleton-image {
+  position: relative;
+  height: 251px;
+}
+
+.project-skeleton-image-placeholder {
+  position: absolute;
+  inset: 0;
+  background-color: #172337;
+}
+
+/* Reusable shimmer */
+.project-skeleton-shimmer {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #172337;
+  border-radius: 4px;
+}
+
+.project-skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  animation: projectSkeletonShimmer 1.4s ease-in-out infinite;
+}
+
+/* Title placeholder */
+.project-skeleton-title {
+  height: 25px;
+  border-radius: 4px;
+}
+
+/* Description placeholders */
+.project-skeleton-description {
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 7px;
+}
+
+.project-skeleton-description span {
+  display: block;
+  height: 8px;
+  flex-shrink: 0;
+  background-color: #172337;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-skeleton-description span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  animation: projectSkeletonShimmer 1.4s ease-in-out infinite;
+}
+
+/* Technology badges: original gap and position retained */
+.project-cards
+  .project-card
+  .project-card-info
+  .tech-badges
+  .project-skeleton-badge {
+  display: block;
+  position: relative;
+  height: 21px;
+  padding: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: #172337;
+  border-radius: 5px;
+}
+
+.project-skeleton-badge i {
+  position: absolute;
+  inset: 0;
+}
+
+/* Footer link placeholders */
+.project-cards
+  .project-card
+  .project-card-info
+  .project-card-footer
+  .links
+  .project-skeleton-link {
+  pointer-events: none;
+}
+
+.project-skeleton-link-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.project-skeleton-link-text {
+  width: 42px;
+  height: 10px;
+}
+
+.project-skeleton-demo-text {
+  width: 62px;
+}
+
+@keyframes projectSkeletonShimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Match mobile image area */
+@media (max-width: 600px) {
+  .project-cards .project-card .project-card-image.project-skeleton-image {
+    height: 183px;
+    min-height: 183px;
+  }
+}
+
 /* All Projects Section */
 
 .all-projects-container {

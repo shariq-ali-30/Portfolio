@@ -7,6 +7,7 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [skills, setSkills] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
 
   function getSkills() {
     const skillsQuery = query(
@@ -26,6 +27,8 @@ export const DataProvider = ({ children }) => {
   }
 
   function getProjects() {
+    setLoadingProjects(true);
+
     const projectsQuery = query(
       collection(db, "projects"),
       orderBy("createdAt", "desc"),
@@ -40,6 +43,7 @@ export const DataProvider = ({ children }) => {
       });
 
       setProjects(projectsList);
+      setLoadingProjects(false);
     });
   }
 
@@ -54,7 +58,13 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={[skills, projects]}>
+    <DataContext.Provider
+      value={[
+        skills,
+        projects,
+        loadingProjects,
+      ]}
+    >
       {children}
     </DataContext.Provider>
   );

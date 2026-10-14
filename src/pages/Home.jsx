@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../context/DataContext.jsx";
-import Resume from "../images/Shariq Ali - Resume.pdf"
+import Resume from "../images/Shariq Ali - Resume.pdf";
 
 const Home = () => {
   const homeSection = useRef();
@@ -17,7 +17,7 @@ const Home = () => {
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  const [skills, projects] = useContext(DataContext);
+  const [skills, projects, loadingProjects] = useContext(DataContext);
 
   const featuredProjects = projects?.filter((project) => project.featured);
 
@@ -285,8 +285,8 @@ const Home = () => {
             <div className="right">
               <button
                 onClick={() => {
-                  setShowAllProjects(true)
-                  document.body.style.overflow = "hidden"
+                  setShowAllProjects(true);
+                  document.body.style.overflow = "hidden";
                 }}
                 className="all-projects-btn"
               >
@@ -295,39 +295,126 @@ const Home = () => {
             </div>
           </div>
           <div className="project-cards" id="featured-projects-parent">
-            {featuredProjects?.map((project, idx) => (
-              <div key={idx} className="project-card">
-                <div className="project-card-image">
-                  <img src={project.image} />
-                </div>
-                <div className="project-card-info">
-                  <h2 className="project-title">{project.name}</h2>
-                  <p className="project-description">{project.description}</p>
-                  <div className="tech-badges">
-                    {project.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className={tech.toLowerCase().replace(" ", "-")}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="project-card-footer">
-                    <div className="hr-x"></div>
-                    <div className="links">
-                      <a target="_blank" href={project.githubLink}>
-                        <i className="fa-brands fa-github"></i> GitHub
-                      </a>
-                      <div className="hr-y"></div>
-                      <a target="_blank" href={project.liveLink}>
-                        <i className="fa-solid fa-globe"></i> Live Demo
-                      </a>
+            {loadingProjects
+              ? Array.from({ length: 6 }).map((_, idx) => (
+                  <div className="project-card" key={idx}>
+                    {/* Image skeleton */}
+                    <div className="project-card-image project-skeleton-image">
+                      <div className="project-skeleton-shimmer project-skeleton-image-placeholder"></div>
+                    </div>
+
+                    <div className="project-card-info">
+                      {/* Project title skeleton */}
+                      <div
+                        className="project-skeleton-shimmer project-skeleton-title"
+                        style={{
+                          width: ["68%", "82%", "74%"][idx],
+                        }}
+                      ></div>
+
+                      {/* Project description skeleton */}
+                      <div className="project-description project-skeleton-description">
+                        <span style={{ width: "100%" }}></span>
+                        <span
+                          style={{ width: ["88%", "94%", "78%"][idx] }}
+                        ></span>
+                        <span
+                          style={{ width: ["62%", "70%", "55%"][idx] }}
+                        ></span>
+                      </div>
+
+                      {/* Technology badges skeleton */}
+                      <div className="tech-badges">
+                        {[58, 72, 49].map((width, badgeIdx) => (
+                          <span
+                            className="project-skeleton-badge"
+                            key={badgeIdx}
+                            style={{
+                              width: `${width + idx * 5}px`,
+                            }}
+                          >
+                            <i className="project-skeleton-shimmer"></i>
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Footer skeleton */}
+                      <div className="project-card-footer">
+                        <div className="hr-x"></div>
+
+                        <div className="links">
+                          <a
+                            className="project-skeleton-link"
+                            aria-hidden="true"
+                          >
+                            <i className="project-skeleton-shimmer project-skeleton-link-icon"></i>
+                            <span className="project-skeleton-shimmer project-skeleton-link-text"></span>
+                          </a>
+
+                          <div className="hr-y"></div>
+
+                          <a
+                            className="project-skeleton-link"
+                            aria-hidden="true"
+                          >
+                            <i className="project-skeleton-shimmer project-skeleton-link-icon"></i>
+                            <span className="project-skeleton-shimmer project-skeleton-link-text project-skeleton-demo-text"></span>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))
+              : featuredProjects?.map((project, idx) => (
+                  <div key={idx} className="project-card">
+                    <div className="project-card-image">
+                      <img src={project.image} alt={project.name} />
+                    </div>
+
+                    <div className="project-card-info">
+                      <h2 className="project-title">{project.name}</h2>
+
+                      <p className="project-description">
+                        {project.description}
+                      </p>
+
+                      <div className="tech-badges">
+                        {project.technologies.map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className={tech.toLowerCase().replace(" ", "-")}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="project-card-footer">
+                        <div className="hr-x"></div>
+
+                        <div className="links">
+                          <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href={project.githubLink}
+                          >
+                            <i className="fa-brands fa-github"></i> GitHub
+                          </a>
+
+                          <div className="hr-y"></div>
+
+                          <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href={project.liveLink}
+                          >
+                            <i className="fa-solid fa-globe"></i> Live Demo
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
           </div>
         </section>
 
@@ -339,8 +426,8 @@ const Home = () => {
               <div>
                 <i
                   onClick={() => {
-                    setShowAllProjects(false)
-                    document.body.style.overflow = "auto"
+                    setShowAllProjects(false);
+                    document.body.style.overflow = "auto";
                   }}
                   className="fa-solid fa-arrow-left"
                 ></i>
@@ -350,41 +437,126 @@ const Home = () => {
 
             <section className="all-projects-section">
               <div className="project-cards" id="all-projects-parent">
-                {projects?.map((project, idx) => (
-                  <div key={idx} className="project-card">
-                    <div className="project-card-image">
-                      <img src={project.image} />
-                    </div>
-                    <div className="project-card-info">
-                      <h2 className="project-title">{project.name}</h2>
-                      <p className="project-description">
-                        {project.description}
-                      </p>
-                      <div className="tech-badges">
-                        {project.technologies.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className={tech.toLowerCase().replace(" ", "-")}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="project-card-footer">
-                        <div className="hr-x"></div>
-                        <div className="links">
-                          <a target="_blank" href={project.githubLink}>
-                            <i className="fa-brands fa-github"></i> GitHub
-                          </a>
-                          <div className="hr-y"></div>
-                          <a target="_blank" href={project.liveLink}>
-                            <i className="fa-solid fa-globe"></i> Live Demo
-                          </a>
+                {loadingProjects
+                  ? Array.from({ length: 6 }).map((_, idx) => (
+                      <div className="project-card" key={idx}>
+                        {/* Image skeleton */}
+                        <div className="project-card-image project-skeleton-image">
+                          <div className="project-skeleton-shimmer project-skeleton-image-placeholder"></div>
+                        </div>
+
+                        <div className="project-card-info">
+                          {/* Project title skeleton */}
+                          <div
+                            className="project-skeleton-shimmer project-skeleton-title"
+                            style={{
+                              width: ["68%", "82%", "74%"][idx],
+                            }}
+                          ></div>
+
+                          {/* Project description skeleton */}
+                          <div className="project-description project-skeleton-description">
+                            <span style={{ width: "100%" }}></span>
+                            <span
+                              style={{ width: ["88%", "94%", "78%"][idx] }}
+                            ></span>
+                            <span
+                              style={{ width: ["62%", "70%", "55%"][idx] }}
+                            ></span>
+                          </div>
+
+                          {/* Technology badges skeleton */}
+                          <div className="tech-badges">
+                            {[58, 72, 49].map((width, badgeIdx) => (
+                              <span
+                                className="project-skeleton-badge"
+                                key={badgeIdx}
+                                style={{
+                                  width: `${width + idx * 5}px`,
+                                }}
+                              >
+                                <i className="project-skeleton-shimmer"></i>
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Footer skeleton */}
+                          <div className="project-card-footer">
+                            <div className="hr-x"></div>
+
+                            <div className="links">
+                              <a
+                                className="project-skeleton-link"
+                                aria-hidden="true"
+                              >
+                                <i className="project-skeleton-shimmer project-skeleton-link-icon"></i>
+                                <span className="project-skeleton-shimmer project-skeleton-link-text"></span>
+                              </a>
+
+                              <div className="hr-y"></div>
+
+                              <a
+                                className="project-skeleton-link"
+                                aria-hidden="true"
+                              >
+                                <i className="project-skeleton-shimmer project-skeleton-link-icon"></i>
+                                <span className="project-skeleton-shimmer project-skeleton-link-text project-skeleton-demo-text"></span>
+                              </a>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
+                    ))
+                  : projects?.map((project, idx) => (
+                      <div key={idx} className="project-card">
+                        <div className="project-card-image">
+                          <img src={project.image} alt={project.name} />
+                        </div>
+
+                        <div className="project-card-info">
+                          <h2 className="project-title">{project.name}</h2>
+
+                          <p className="project-description">
+                            {project.description}
+                          </p>
+
+                          <div className="tech-badges">
+                            {project.technologies.map((tech, idx) => (
+                              <span
+                                key={idx}
+                                className={tech.toLowerCase().replace(" ", "-")}
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="project-card-footer">
+                            <div className="hr-x"></div>
+
+                            <div className="links">
+                              <a
+                                target="_blank"
+                                rel="noreferrer"
+                                href={project.githubLink}
+                              >
+                                <i className="fa-brands fa-github"></i> GitHub
+                              </a>
+
+                              <div className="hr-y"></div>
+
+                              <a
+                                target="_blank"
+                                rel="noreferrer"
+                                href={project.liveLink}
+                              >
+                                <i className="fa-solid fa-globe"></i> Live Demo
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
               </div>
             </section>
           </div>
